@@ -24,5 +24,13 @@ public class PlaceOrder extends JFrame {
 
     // === Buttons ===
     private JButton placeOrderButton, bToHome, cancel;
-    
+
+    public PlaceOrder() {
+        
+        setTitle("Place Order");
+        setSize(600, 223);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
 }
