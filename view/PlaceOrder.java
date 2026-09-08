@@ -12,7 +12,7 @@ public class PlaceOrder extends JFrame {
     // === Panels ===
     private JPanel topPanel, subLeftPanel, subRightPanel;
     private JPanel subLeftNorthPanel, subLeftSouthPanel;
-    // private JPanel subRightCenterPanel, subRightSouthPanel;
+    private JPanel subRightCenterPanel, subRightSouthPanel;
 
     // === Labels ===
     private JLabel titleLabel;
@@ -97,16 +97,31 @@ public class PlaceOrder extends JFrame {
 
     private void rightButtonPanel() {
         subRightPanel = new JPanel();
-        subRightPanel.setLayout(new GridLayout(3, 1));
+
+        subRightCenterPanel = new JPanel();
+        subRightCenterPanel.setLayout(new GridLayout(3, 1));
 
         placeOrderButton = createButton("Place Order", new Color(0x27AE60));
         bToHome = createButton("Back to Home", new Color(0x3498DB));
         cancel = createButton("Cancel", new Color(0xE74C3C));
 
-        subRightPanel.add(placeOrderButton);
-        subRightPanel.add(bToHome);
-        subRightPanel.add(cancel);
+        subRightCenterPanel.add(placeOrderButton);
+        subRightCenterPanel.add(bToHome);
+        subRightCenterPanel.add(cancel);
 
+        subRightPanel.add(subRightCenterPanel, BorderLayout.CENTER);
+
+        subRightSouthPanel = new JPanel(new GridLayout(1, 2));
+
+        netTotal = createStyledLabel("Net Total:");
+        netTotalValue = createStyledLabel("");
+
+        subRightSouthPanel.add(netTotal);
+        subRightSouthPanel.add(netTotalValue);
+
+        subRightPanel.add(subRightSouthPanel, BorderLayout.SOUTH);
+
+        
         add(subRightPanel, BorderLayout.EAST);
     }
 
