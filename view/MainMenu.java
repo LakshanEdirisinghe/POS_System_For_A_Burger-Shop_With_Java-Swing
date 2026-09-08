@@ -7,7 +7,7 @@ public class MainMenu extends JFrame {
 
     private JPanel subLeftPanel, subRightPanel;
 
-    public MainMenu(){
+    public MainMenu() {
         setTitle("Home Page");
         setSize(1227, 579);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,13 +20,12 @@ public class MainMenu extends JFrame {
         add(subLeftPanel);
         add(subRightPanel);
 
-
         // === Components ===
         setupLeftPanel();
         // setupRightPanel();
     }
 
-    private void setupLeftPanel(){
+    private void setupLeftPanel() {
 
         JLabel heading = new JLabel("Welcome to Burgers");
         heading.setFont(new Font("Quicksand", Font.BOLD, 40));
@@ -45,9 +44,12 @@ public class MainMenu extends JFrame {
 
     }
 
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setBackground(new Color(209, 72, 72));
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Quicksand", Font.BOLD, 20));
+        return button;
+    }
 
-    
-
-
-    
 }
