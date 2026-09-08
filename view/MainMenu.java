@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
+import util.Components;
 
 public class MainMenu extends JFrame {
 
@@ -17,8 +18,24 @@ public class MainMenu extends JFrame {
         subLeftPanel = new JPanel(new BorderLayout());
         subRightPanel = new JPanel(new BorderLayout());
 
+        add(subLeftPanel);
+        add(subRightPanel);
+
+
+        // === Components ===
+        setupLeftPanel();
+        // setupRightPanel();
+    }
+
+    private void setupLeftPanel(){
+
+        
+
+        
 
     }
+
+
     
 
 

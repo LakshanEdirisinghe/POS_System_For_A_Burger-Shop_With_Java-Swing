@@ -1,5 +1,7 @@
 package model;
 
+import util.OrderStatus;
+
 public class Order {
 
     private String orderId;
