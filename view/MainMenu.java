@@ -5,7 +5,9 @@ import javax.swing.*;
 
 public class MainMenu extends JFrame {
 
-    private JPanel subLeftPanel, subRightPanel;
+    private JPanel subLeftPanel, subRightPanel, btnPanel;
+    private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
+            btnExit;
 
     public MainMenu() {
         setTitle("Home Page");
@@ -22,7 +24,7 @@ public class MainMenu extends JFrame {
 
         // === Components ===
         setupLeftPanel();
-        // setupRightPanel();
+        setupRightPanel();
     }
 
     private void setupLeftPanel() {
@@ -42,6 +44,37 @@ public class MainMenu extends JFrame {
         subLeftPanel.add(imgView, BorderLayout.CENTER);
         subLeftPanel.add(copyRightSign, BorderLayout.SOUTH);
 
+    }
+
+    private void setupRightPanel() {
+        subRightPanel.setBackground(new Color(216, 216, 216));
+
+        btnPanel = new JPanel(new GridLayout(6, 1, 10, 10));
+        btnPanel.setBackground(new Color(216, 216, 216));
+        btnPanel.setBorder(BorderFactory.createEmptyBorder(120, 120, 120, 120));
+
+        // Buttons
+        btnPlaceOrder = createStyledButton("Place Order");
+        btnBestCustomer = createStyledButton("Find Best Customer");
+        btnSearchOrder = createStyledButton("Search Order");
+        btnCustomerDetails = createStyledButton("Search Customer Details");
+        btnViewOrders = createStyledButton("View Orders");
+        btnUpdateOrder = createStyledButton("Update Order Details");
+        btnExit = createStyledButton("Exit");
+
+        btnPanel.add(btnPlaceOrder);
+        btnPanel.add(btnBestCustomer);
+        btnPanel.add(btnSearchOrder);
+        btnPanel.add(btnCustomerDetails);
+        btnPanel.add(btnViewOrders);
+        btnPanel.add(btnUpdateOrder);
+
+        JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        exitPanel.setBackground(new Color(216, 216, 216));
+        exitPanel.add(btnExit);
+
+        subRightPanel.add(btnPanel, BorderLayout.CENTER);
+        subRightPanel.add(exitPanel, BorderLayout.SOUTH);
     }
 
     private JButton createStyledButton(String text) {
