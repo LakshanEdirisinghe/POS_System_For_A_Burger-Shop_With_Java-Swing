@@ -11,8 +11,8 @@ public class PlaceOrder extends JFrame {
 
     // === Panels ===
     private JPanel topPanel, subLeftPanel, subRightPanel;
-    private JPanel subNorthPanel, subSouthPanel;
-    private JPanel subRightCenterPanel, subRightSouthPanel;
+    private JPanel subLeftNorthPanel, subLeftSouthPanel;
+    // private JPanel subRightCenterPanel, subRightSouthPanel;
 
     // === Labels ===
     private JLabel titleLabel;
@@ -34,6 +34,7 @@ public class PlaceOrder extends JFrame {
         setLocationRelativeTo(null);
 
         headerPanel();
+        rightFormPanel();
     }
 
     private void headerPanel() {
@@ -47,10 +48,55 @@ public class PlaceOrder extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
+    private void rightFormPanel() {
+
+        subLeftPanel = new JPanel();
+        subRightPanel = new JPanel();
+
+        orderId = createStyledLabel("Order ID:");
+        orderIdValue = createStyledLabel("O000");
+        // orderIdValue.setText(fullOrderId);
+
+        customerId = createStyledLabel("Customer ID:");
+        customerIdValue = createStyledTextField("C");
+
+        qtyLabel = createStyledLabel("Burger QTY:");
+        qtyField = createStyledTextField("");
+
+        orderStatusLabel = createStyledLabel("Order Status:");
+        orderStatusValue = createStyledLabel("  Pending...");
+
+        subLeftNorthPanel = new JPanel();
+        subLeftNorthPanel.setLayout(new GridLayout(2, 2));
+
+        
+
+        subLeftNorthPanel.add(orderId);
+        subLeftNorthPanel.add(orderIdValue);
+        subLeftNorthPanel.add(customerId);
+        subLeftNorthPanel.add(customerIdValue);
+
+        subLeftPanel.add(subLeftNorthPanel,BorderLayout.NORTH);
+
+        subLeftSouthPanel = new JPanel();
+        subLeftSouthPanel.setLayout(new GridLayout(2, 2));
+
+        subLeftSouthPanel.add(qtyLabel);
+        subLeftSouthPanel.add(qtyField);
+        subLeftSouthPanel.add(orderStatusLabel);
+        subLeftSouthPanel.add(orderStatusValue);
+
+        subLeftPanel.add(subLeftSouthPanel,BorderLayout.SOUTH);
+
+        add(subLeftPanel, BorderLayout.CENTER);
+
+        
+    }
+
 
     private JLabel createStyledLabel(String text) {
         JLabel label = new JLabel(text);
-        label.setFont(new Font("Quicksand", Font.BOLD, 30));
+        label.setFont(new Font("Quicksand", Font.BOLD, 20));
         return label;
     }
 
