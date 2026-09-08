@@ -32,11 +32,25 @@ public class PlaceOrder extends JFrame {
         setSize(600, 223);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+
+        headerPanel();
     }
+
+    private void headerPanel() {
+        topPanel = new JPanel();
+        topPanel.setBackground(new Color(0x2C3E50));
+
+        titleLabel = createStyledLabel("Place Order");
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setForeground(Color.WHITE);
+        topPanel.add(titleLabel);
+        add(topPanel, BorderLayout.NORTH);
+    }
+
 
     private JLabel createStyledLabel(String text) {
         JLabel label = new JLabel(text);
-        label.setFont(new Font("Quicksand", Font.BOLD, 20));
+        label.setFont(new Font("Quicksand", Font.BOLD, 30));
         return label;
     }
 
