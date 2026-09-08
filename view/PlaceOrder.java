@@ -96,7 +96,7 @@ public class PlaceOrder extends JFrame {
     }
 
     private void rightButtonPanel() {
-        subRightPanel = new JPanel();
+        subRightPanel = new JPanel(new BorderLayout());
 
         subRightCenterPanel = new JPanel();
         subRightCenterPanel.setLayout(new GridLayout(3, 1));
