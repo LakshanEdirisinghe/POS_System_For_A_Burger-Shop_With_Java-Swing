@@ -34,7 +34,9 @@ public class PlaceOrder extends JFrame {
         setLocationRelativeTo(null);
 
         headerPanel();
-        rightFormPanel();
+        leftFormPanel();
+        rightButtonPanel();
+
     }
 
     private void headerPanel() {
@@ -42,19 +44,19 @@ public class PlaceOrder extends JFrame {
         topPanel.setBackground(new Color(0x2C3E50));
 
         titleLabel = createStyledLabel("Place Order");
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(new Font("Quicksand", Font.BOLD, 35));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel);
         add(topPanel, BorderLayout.NORTH);
     }
 
-    private void rightFormPanel() {
+    private void leftFormPanel() {
 
         subLeftPanel = new JPanel();
         subRightPanel = new JPanel();
 
         orderId = createStyledLabel("Order ID:");
-        orderIdValue = createStyledLabel("O000");
+        orderIdValue = createStyledLabel("");
         // orderIdValue.setText(fullOrderId);
 
         customerId = createStyledLabel("Customer ID:");
@@ -64,7 +66,7 @@ public class PlaceOrder extends JFrame {
         qtyField = createStyledTextField("");
 
         orderStatusLabel = createStyledLabel("Order Status:");
-        orderStatusValue = createStyledLabel("  Pending...");
+        orderStatusValue = createStyledLabel("");
 
         subLeftNorthPanel = new JPanel();
         subLeftNorthPanel.setLayout(new GridLayout(2, 2));
@@ -93,6 +95,20 @@ public class PlaceOrder extends JFrame {
         
     }
 
+    private void rightButtonPanel() {
+        subRightPanel = new JPanel();
+        subRightPanel.setLayout(new GridLayout(3, 1));
+
+        placeOrderButton = createButton("Place Order", new Color(0x27AE60));
+        bToHome = createButton("Back to Home", new Color(0x3498DB));
+        cancel = createButton("Cancel", new Color(0xE74C3C));
+
+        subRightPanel.add(placeOrderButton);
+        subRightPanel.add(bToHome);
+        subRightPanel.add(cancel);
+
+        add(subRightPanel, BorderLayout.EAST);
+    }
 
     private JLabel createStyledLabel(String text) {
         JLabel label = new JLabel(text);
