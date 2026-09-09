@@ -27,7 +27,7 @@ public class SearchOrder extends JFrame {
 
         headerPanel();
         centerSearchBarPanal();
-
+        centerFormPannel();
         bottomBackBtnPanel();
 
     }
@@ -58,7 +58,48 @@ public class SearchOrder extends JFrame {
         subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
 
         subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+
+    }
+
+    private void centerFormPannel() {
+        subLeftCCPanel = new JPanel(new GridLayout(0, 2, 10, 10));
+        subLeftCCPanel.removeAll();
+
+        // Create labels
+        customerIdLabel = createStyledLabel("Customer ID ");
+        customerIdValue = createStyledLabel(": " + "C015");
+
+        nameLabel = createStyledLabel("Customer Name ");
+        nameValue = createStyledLabel(": " + "Ayomal");
+
+        qtyLabel = createStyledLabel("Quantity ");
+        qtyValue = createStyledLabel(": " + 4);
+
+        totalLabel = createStyledLabel("Total ");
+        totalValue = createStyledLabel(": " + 2400 + " LKR");
+
+        statusLabel = createStyledLabel("Status ");
+        statusValue = createStyledLabel(": " + "DELIVERED");
+
+        // Add to panel
+        subLeftCCPanel.add(customerIdLabel);
+        subLeftCCPanel.add(customerIdValue);
+        subLeftCCPanel.add(nameLabel);
+        subLeftCCPanel.add(nameValue);
+        subLeftCCPanel.add(qtyLabel);
+        subLeftCCPanel.add(qtyValue);
+        subLeftCCPanel.add(totalLabel);
+        subLeftCCPanel.add(totalValue);
+        subLeftCCPanel.add(statusLabel);
+        subLeftCCPanel.add(statusValue);
+
+        // refresh UI
+        subLeftCCPanel.revalidate();
+        subLeftCCPanel.repaint();
+        subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
+        subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
         add(subCenterPanel, BorderLayout.CENTER);
+
     }
 
     private void bottomBackBtnPanel() {
@@ -86,4 +127,6 @@ public class SearchOrder extends JFrame {
         button.setFont(new Font("Quicksand", Font.BOLD, 20));
         return button;
     }
+
+    
 }
