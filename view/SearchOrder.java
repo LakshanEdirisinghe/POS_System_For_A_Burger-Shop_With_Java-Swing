@@ -43,7 +43,7 @@ public class SearchOrder extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
-    private void centerSearchBarPanal(){
+    private void centerSearchBarPanal() {
 
         subCenterPanel = new JPanel(new BorderLayout());
         subCenterTopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -57,12 +57,11 @@ public class SearchOrder extends JFrame {
         subCenterTopPanel.add(searchBtn);
         subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
 
-        subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0)); 
+        subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         add(subCenterPanel, BorderLayout.CENTER);
     }
 
-
-    private void bottomBackBtnPanel(){
+    private void bottomBackBtnPanel() {
 
         subBottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         subBottomPanel.setBackground(Color.WHITE);
@@ -72,7 +71,6 @@ public class SearchOrder extends JFrame {
         subBottomPanel.add(back);
         add(subBottomPanel, BorderLayout.SOUTH);
 
-
     }
 
     private JLabel createStyledLabel(String text) {
@@ -81,7 +79,7 @@ public class SearchOrder extends JFrame {
         return label;
     }
 
-        private JButton createStyledButton(String text) {
+    private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setBackground(new Color(209, 72, 72));
         button.setForeground(Color.WHITE);
