@@ -52,9 +52,6 @@ public class SearchOrder extends JFrame {
         searchBtn = createStyledButton("Search");
 
 
-        // subCenterTopPanel.add(searchField);
-        // subCenterTopPanel.add(searchBtn);
-
 
 
 
@@ -62,10 +59,7 @@ public class SearchOrder extends JFrame {
         subCenterTopPanel.add(searchBtn);
         subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
 
-        subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
-        // subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
-        // subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
-        
+        subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0)); 
         add(subCenterPanel, BorderLayout.CENTER);
     }
 
