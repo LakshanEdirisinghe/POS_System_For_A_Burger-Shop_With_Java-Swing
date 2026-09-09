@@ -43,30 +43,30 @@ public class SearchOrder extends JFrame {
 
     private void centerFormPanal(){
 
-        // subCenterPanel = new JPanel(new BorderLayout());
-        // subCenterTopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        subCenterPanel = new JPanel(new BorderLayout());
+        subCenterTopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-        // searchField = new JTextField(20);
-        // searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
+        searchField = new JTextField(20);
+        searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
 
-        // searchBtn = createStyledButton("Search");
-
-
-        // subCenterTopPanel.add(searchField);
-        // subCenterTopPanel.add(searchBtn);
-
-
+        searchBtn = createStyledButton("Search");
 
 
         // subCenterTopPanel.add(searchField);
         // subCenterTopPanel.add(searchBtn);
-        // subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
 
-        // subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+
+
+
+        subCenterTopPanel.add(searchField);
+        subCenterTopPanel.add(searchBtn);
+        subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
+
+        subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         // subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
         // subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
         
-        // add(subCenterPanel, BorderLayout.CENTER);
+        add(subCenterPanel, BorderLayout.CENTER);
     }
 
     private JLabel createStyledLabel(String text) {
