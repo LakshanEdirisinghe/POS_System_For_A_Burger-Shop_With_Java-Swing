@@ -1,8 +1,4 @@
-import view.BestCustomer;
-import view.MainMenu;
-import view.PlaceOrder;
-import view.BestCustomer;
-import view.SearchOrder;
+import view.*;
 
 class Main{
     public static void main(String[] args) {
@@ -10,7 +6,9 @@ class Main{
         // new MainMenu().setVisible(true);
         // new PlaceOrder().setVisible(true);
         // new BestCustomer().setVisible(true);
-        new SearchOrder().setVisible(true);
+        // new SearchOrder().setVisible(true);
+        new SearchCustomer().setVisible(true);
+
         
     }
 }
