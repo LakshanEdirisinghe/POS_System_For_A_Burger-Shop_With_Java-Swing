@@ -26,7 +26,7 @@ public class SearchOrder extends JFrame {
         setLocationRelativeTo(null);
 
         headerPanel();
-        centerFormPanal();
+        centerSearchBarPanal();
 
     }
 
@@ -41,7 +41,7 @@ public class SearchOrder extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
-    private void centerFormPanal(){
+    private void centerSearchBarPanal(){
 
         subCenterPanel = new JPanel(new BorderLayout());
         subCenterTopPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -50,10 +50,6 @@ public class SearchOrder extends JFrame {
         searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
 
         searchBtn = createStyledButton("Search");
-
-
-
-
 
         subCenterTopPanel.add(searchField);
         subCenterTopPanel.add(searchBtn);
