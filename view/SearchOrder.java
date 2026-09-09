@@ -28,6 +28,8 @@ public class SearchOrder extends JFrame {
         headerPanel();
         centerSearchBarPanal();
 
+        bottomBackBtnPanel();
+
     }
 
     private void headerPanel() {
@@ -57,6 +59,20 @@ public class SearchOrder extends JFrame {
 
         subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0)); 
         add(subCenterPanel, BorderLayout.CENTER);
+    }
+
+
+    private void bottomBackBtnPanel(){
+
+        subBottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        subBottomPanel.setBackground(Color.WHITE);
+
+        back = createStyledButton("Back to Home");
+
+        subBottomPanel.add(back);
+        add(subBottomPanel, BorderLayout.SOUTH);
+
+
     }
 
     private JLabel createStyledLabel(String text) {
