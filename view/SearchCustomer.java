@@ -40,10 +40,10 @@ public class SearchCustomer extends JFrame {
 
         subTopTitleJPanel.setBackground(new Color(0x2C3E50));
 
-        title = createStyledLabel("Place Order");
+        title = createStyledLabel("Search Customer");
         title.setFont(new Font("Quicksand", Font.BOLD, 30));
         title.setForeground(Color.WHITE);
-        
+
         subTopTitleJPanel.add(title);
         subToPPanel.add(subTopTitleJPanel, BorderLayout.NORTH);
 
