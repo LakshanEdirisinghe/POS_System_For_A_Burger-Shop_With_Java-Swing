@@ -47,19 +47,25 @@ public class SearchCustomer extends JFrame {
         subTopTitleJPanel.add(title);
         subToPPanel.add(subTopTitleJPanel, BorderLayout.NORTH);
 
-        // createStyledPanel("Search Customer", 40, subTopTitleJPanel);
+        searchField = new JTextField(20);
+        searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
 
-        // searchField = new JTextField(20);
-        // searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
+        searchBtn = createStyledButton("Search");
 
-        // searchBtn = createStyledButton("Search");
+        subToPPanel.add(searchField, BorderLayout.CENTER);
+        subToPPanel.add(searchBtn, BorderLayout.EAST);
 
-        // subTopCenterPanel.add(searchField);
-        // subTopCenterPanel.add(searchBtn);
-
-        // subTopBottomPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
+        subToPPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
 
         add(subToPPanel);
+    }
+
+    private JButton createStyledButton(String text) {
+        JButton button = new JButton(text);
+        button.setBackground(new Color(209, 72, 72));
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Quicksand", Font.BOLD, 20));
+        return button;
     }
 
     private JLabel createStyledLabel(String text) {
