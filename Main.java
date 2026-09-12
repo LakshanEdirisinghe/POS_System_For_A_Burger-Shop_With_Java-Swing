@@ -8,7 +8,8 @@ class Main{
         // new BestCustomer().setVisible(true);
         // new SearchOrder().setVisible(true);
         // new SearchCustomer().setVisible(true);
-        new ViewOrders().setVisible(true);
+        // new ViewOrders().setVisible(true);
+        new UpdateDetails().setVisible(true);
 
         
     }
