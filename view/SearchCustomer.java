@@ -18,7 +18,7 @@ public class SearchCustomer extends JFrame {
 
     private JTextField searchField;
     private JButton back, searchBtn;
-    private JLabel name, nameValue, title;
+    private JLabel name, nameValue, title, titlebottumname;
 
     public SearchCustomer() {
 
@@ -29,6 +29,7 @@ public class SearchCustomer extends JFrame {
         setLocationRelativeTo(null);
 
         subTopPannal();
+        subBottomPannal();
 
     }
 
@@ -52,12 +53,35 @@ public class SearchCustomer extends JFrame {
 
         searchBtn = createStyledButton("Search");
 
-        subToPPanel.add(searchField, BorderLayout.CENTER);
-        subToPPanel.add(searchBtn, BorderLayout.EAST);
+        subTopBottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        subTopBottomPanel.add(searchField);
+        subTopBottomPanel.add(searchBtn);
 
-        subToPPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
+        subToPPanel.add(subTopBottomPanel, BorderLayout.CENTER);
+
+        // subToPPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
 
         add(subToPPanel);
+    }
+
+    private void subBottomPannal() {
+        subBottomPanel = new JPanel(new BorderLayout());
+
+        subBottomTitleJPanel = new JPanel();
+
+        subBottomTitleJPanel.setBackground(new Color(0x2C3E50));
+
+        titlebottumname = createStyledLabel("Order Details");
+        titlebottumname.setFont(new Font("Quicksand", Font.BOLD, 20));
+        titlebottumname.setForeground(Color.WHITE);
+
+        subBottomTitleJPanel.add(titlebottumname);
+        subBottomPanel.add(subBottomTitleJPanel, BorderLayout.NORTH);
+
+
+
+        add(subBottomPanel);
+
     }
 
     private JButton createStyledButton(String text) {
