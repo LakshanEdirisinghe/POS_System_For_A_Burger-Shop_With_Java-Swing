@@ -18,7 +18,7 @@ public class SearchCustomer extends JFrame {
 
     private JTextField searchField;
     private JButton back, searchBtn;
-    private JLabel name, nameValue, title, titlebottumname;
+    private JLabel CustnameTag, nameValue, title, titlebottumname;
 
     public SearchCustomer() {
 
@@ -86,7 +86,7 @@ public class SearchCustomer extends JFrame {
 
         back = createStyledButton("Back");
         subBottomBPanel.add(back);
-        subBottomPanel.add(subBottomBPanel,BorderLayout.SOUTH);
+        subBottomPanel.add(subBottomBPanel, BorderLayout.SOUTH);
 
         add(subBottomPanel);
 
