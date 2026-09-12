@@ -13,7 +13,7 @@ import java.awt.*;
 
 public class SearchCustomer extends JFrame {
 
-    private JPanel subToPPanel, subBottomPanel, subBottomBPanel, subTopCenterPanel, subTopBottomPanel,
+    private JPanel subToPPanel, subBottomPanel, subBottomBPanel, subBottomCenterPanel, subTopBottomPanel,
             subTopTitleJPanel, subBottomTitleJPanel;
 
     private JTextField searchField;
@@ -67,7 +67,7 @@ public class SearchCustomer extends JFrame {
     private void subBottomPannal() {
         subBottomPanel = new JPanel(new BorderLayout());
 
-        subBottomTitleJPanel = new JPanel();
+        subBottomTitleJPanel = new JPanel();//
 
         subBottomTitleJPanel.setBackground(new Color(0x2C3E50));
 
@@ -78,7 +78,15 @@ public class SearchCustomer extends JFrame {
         subBottomTitleJPanel.add(titlebottumname);
         subBottomPanel.add(subBottomTitleJPanel, BorderLayout.NORTH);
 
+        // subBottomCenterPanel = new JPanel(new BorderLayout());
 
+        // for order details table is here
+
+        subBottomBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
+        back = createStyledButton("Back");
+        subBottomBPanel.add(back);
+        subBottomPanel.add(subBottomBPanel,BorderLayout.SOUTH);
 
         add(subBottomPanel);
 
