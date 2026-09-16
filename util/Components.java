@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class Components {
 
@@ -27,6 +28,12 @@ public class Components {
         btn.setForeground(Color.WHITE);
         btn.setFont(new Font("Quicksand", Font.BOLD, 20));
         return btn;
+    }
+
+    public static JTextField createStyledTextField(String text) {
+        JTextField textField = new JTextField(text);
+        textField.setFont(new Font("Quicksand", Font.BOLD, 20));
+        return textField;
     }
 
 }

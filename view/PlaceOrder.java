@@ -62,10 +62,10 @@ public class PlaceOrder extends JFrame {
         // orderIdValue.setText(fullOrderId);
 
         customerId = Components.createStyledLabel("Customer ID:");
-        customerIdValue = createStyledTextField("C");
+        customerIdValue = Components.createStyledTextField("C");
 
         qtyLabel = Components.createStyledLabel("Burger QTY:");
-        qtyField = createStyledTextField("");
+        qtyField = Components.createStyledTextField("");
 
         orderStatusLabel = Components.createStyledLabel("Order Status:");
         orderStatusValue = Components.createStyledLabel("");
@@ -121,12 +121,6 @@ public class PlaceOrder extends JFrame {
         subRightPanel.add(subRightSouthPanel, BorderLayout.SOUTH);
 
         add(subRightPanel, BorderLayout.EAST);
-    }
-
-    private JTextField createStyledTextField(String text) {
-        JTextField textField = new JTextField(text);
-        textField.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return textField;
     }
 
 }
