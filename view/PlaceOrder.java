@@ -100,9 +100,9 @@ public class PlaceOrder extends JFrame {
         subRightCenterPanel = new JPanel();
         subRightCenterPanel.setLayout(new GridLayout(3, 1));
 
-        placeOrderButton = createButton("Place Order", new Color(0x27AE60));
-        bToHome = createButton("Back to Home", new Color(0x3498DB));
-        cancel = createButton("Cancel", new Color(0xE74C3C));
+        placeOrderButton = Components.createStyledButton("Place Order", new Color(0x27AE60));
+        bToHome = Components.createStyledButton("Back to Home", new Color(0x3498DB));
+        cancel = Components.createStyledButton("Cancel", new Color(0xE74C3C));
 
         subRightCenterPanel.add(placeOrderButton);
         subRightCenterPanel.add(bToHome);
@@ -127,14 +127,6 @@ public class PlaceOrder extends JFrame {
         JTextField textField = new JTextField(text);
         textField.setFont(new Font("Quicksand", Font.BOLD, 20));
         return textField;
-    }
-
-    private JButton createButton(String text, Color bgColor) {
-        JButton btn = new JButton(text);
-        btn.setBackground(bgColor);
-        btn.setForeground(Color.WHITE);
-        btn.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return btn;
     }
 
 }

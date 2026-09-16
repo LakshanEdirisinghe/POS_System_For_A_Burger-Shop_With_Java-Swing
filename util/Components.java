@@ -21,4 +21,12 @@ public class Components {
         return label;
     }
 
+    public static JButton createStyledButton(String text, Color bgColor) {
+        JButton btn = new JButton(text);
+        btn.setBackground(bgColor);
+        btn.setForeground(Color.WHITE);
+        btn.setFont(new Font("Quicksand", Font.BOLD, 20));
+        return btn;
+    }
+
 }
