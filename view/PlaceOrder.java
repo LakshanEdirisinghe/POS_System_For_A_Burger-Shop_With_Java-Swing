@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 
+import util.Components;
+
 public class PlaceOrder extends JFrame {
 
     // === Panels ===
@@ -43,7 +45,7 @@ public class PlaceOrder extends JFrame {
         topPanel = new JPanel();
         topPanel.setBackground(new Color(0x2C3E50));
 
-        titleLabel = createStyledLabel("Place Order");
+        titleLabel = Components.createStyledLabel("Place Order");
         titleLabel.setFont(new Font("Quicksand", Font.BOLD, 35));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel);
@@ -55,30 +57,28 @@ public class PlaceOrder extends JFrame {
         subLeftPanel = new JPanel();
         subRightPanel = new JPanel();
 
-        orderId = createStyledLabel("Order ID:");
-        orderIdValue = createStyledLabel("");
+        orderId = Components.createStyledLabel("Order ID:");
+        orderIdValue = Components.createStyledLabel("");
         // orderIdValue.setText(fullOrderId);
 
-        customerId = createStyledLabel("Customer ID:");
+        customerId = Components.createStyledLabel("Customer ID:");
         customerIdValue = createStyledTextField("C");
 
-        qtyLabel = createStyledLabel("Burger QTY:");
+        qtyLabel = Components.createStyledLabel("Burger QTY:");
         qtyField = createStyledTextField("");
 
-        orderStatusLabel = createStyledLabel("Order Status:");
-        orderStatusValue = createStyledLabel("");
+        orderStatusLabel = Components.createStyledLabel("Order Status:");
+        orderStatusValue = Components.createStyledLabel("");
 
         subLeftNorthPanel = new JPanel();
         subLeftNorthPanel.setLayout(new GridLayout(2, 2));
-
-        
 
         subLeftNorthPanel.add(orderId);
         subLeftNorthPanel.add(orderIdValue);
         subLeftNorthPanel.add(customerId);
         subLeftNorthPanel.add(customerIdValue);
 
-        subLeftPanel.add(subLeftNorthPanel,BorderLayout.NORTH);
+        subLeftPanel.add(subLeftNorthPanel, BorderLayout.NORTH);
 
         subLeftSouthPanel = new JPanel();
         subLeftSouthPanel.setLayout(new GridLayout(2, 2));
@@ -88,11 +88,10 @@ public class PlaceOrder extends JFrame {
         subLeftSouthPanel.add(orderStatusLabel);
         subLeftSouthPanel.add(orderStatusValue);
 
-        subLeftPanel.add(subLeftSouthPanel,BorderLayout.SOUTH);
+        subLeftPanel.add(subLeftSouthPanel, BorderLayout.SOUTH);
 
         add(subLeftPanel, BorderLayout.CENTER);
 
-        
     }
 
     private void rightButtonPanel() {
@@ -113,22 +112,15 @@ public class PlaceOrder extends JFrame {
 
         subRightSouthPanel = new JPanel(new GridLayout(1, 2));
 
-        netTotal = createStyledLabel("Net Total:");
-        netTotalValue = createStyledLabel("");
+        netTotal = Components.createStyledLabel("Net Total:");
+        netTotalValue = Components.createStyledLabel("");
 
         subRightSouthPanel.add(netTotal);
         subRightSouthPanel.add(netTotalValue);
 
         subRightPanel.add(subRightSouthPanel, BorderLayout.SOUTH);
 
-        
         add(subRightPanel, BorderLayout.EAST);
-    }
-
-    private JLabel createStyledLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return label;
     }
 
     private JTextField createStyledTextField(String text) {

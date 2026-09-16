@@ -3,6 +3,7 @@ package util;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class Components {
 
@@ -12,6 +13,12 @@ public class Components {
         button.setForeground(Color.WHITE);
         button.setFont(new Font("Quicksand", Font.BOLD, 20));
         return button;
+    }
+
+    public static JLabel createStyledLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Quicksand", Font.BOLD, 20));
+        return label;
     }
 
 }
