@@ -19,6 +19,12 @@ public class PlaceOrderManager {
 
     public static boolean placeOrder(OrderItem orderItem) {
 
+
+        if(CustomerManager.findCustomerById(orderItem.getCustId()) == null) {
+            JOptionPane.showMessageDialog(null, "Customer ID not found. Please enter a valid Customer ID.");
+            return false;
+        }
+
         // if (customerId.isEmpty() || qtyField.getText().isEmpty()) {
         //     JOptionPane.showMessageDialog(null, "Please fill in all fields.");
         //     return;
