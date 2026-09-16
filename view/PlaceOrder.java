@@ -59,7 +59,7 @@ public class PlaceOrder extends JFrame {
         subRightPanel = new JPanel();
 
         orderId = Components.createStyledLabel("Order ID:");
-        orderIdValue = Components.createStyledLabel("O"+PlaceOrderManager.getID());
+        orderIdValue = Components.createStyledLabel(PlaceOrderManager.getID() + "");
         // orderIdValue.setText(fullOrderId);
 
         customerId = Components.createStyledLabel("Customer ID:");
