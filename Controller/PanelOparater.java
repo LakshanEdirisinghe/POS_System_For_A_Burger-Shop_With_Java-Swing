@@ -6,31 +6,31 @@ import view.*;
 
 public class PanelOparater {
 
-    public void openPlaceOrder() {
+    public static void openPlaceOrder() {
         openWindow(new PlaceOrder());
     }
 
-    public void openBestCustomer() {
+    public static void openBestCustomer() {
         openWindow(new BestCustomer());
     }
 
-    public void openSearchOrder() {
+    public static void openSearchOrder() {
         openWindow(new SearchOrder());
     }
 
-    public void openSearchCustomer() {
+    public static void openSearchCustomer() {
         openWindow(new SearchCustomer());
     }
 
-    public void openViewOrders() {
+    public static void openViewOrders() {
         openWindow(new ViewOrders());
     }
 
-    public void openUpdateDetails() {
+    public static void openUpdateDetails() {
         openWindow(new UpdateDetails());
     }
 
-    private void openWindow(JFrame window) {
+    private static void openWindow(JFrame window) {
         window.setVisible(true);
     }
 }

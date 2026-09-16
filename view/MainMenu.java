@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 import Controller.PanelOparater;
@@ -13,7 +12,7 @@ public class MainMenu extends JFrame {
     private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
             btnExit;
 
-    private PanelOparater panelOparater;
+    // private PanelOparater panelOparater;
 
     public MainMenu() {
         setTitle("Home Page");
@@ -32,7 +31,7 @@ public class MainMenu extends JFrame {
         setupLeftPanel();
         setupRightPanel();
 
-        panelOparater = new PanelOparater();
+        // panelOparater = new PanelOparater();
         eventListeners();
     }
 
@@ -106,32 +105,32 @@ public class MainMenu extends JFrame {
     }
 
     private void openPlaceOrder() {
-        panelOparater.openPlaceOrder();
+        PanelOparater.openPlaceOrder();
         dispose();
     }
 
     private void openBestCustomer() {
-        panelOparater.openBestCustomer();
+        PanelOparater.openBestCustomer();
         dispose();
     }
 
     private void openSearchOrder() {
-        panelOparater.openSearchOrder();
+        PanelOparater.openSearchOrder();
         dispose();
     }
 
     private void openSearchCustomer() {
-        panelOparater.openSearchCustomer();
+        PanelOparater.openSearchCustomer();
         dispose();
     }
 
     private void openViewOrders() {
-        panelOparater.openViewOrders();
+        PanelOparater.openViewOrders();
         dispose();
     }
 
     private void openUpdateDetails() {
-        panelOparater.openUpdateDetails();
+        PanelOparater.openUpdateDetails();
         dispose();
     }
 
