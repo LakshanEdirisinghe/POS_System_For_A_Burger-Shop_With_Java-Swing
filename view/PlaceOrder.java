@@ -6,8 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import util.*;
+import Controller.PanelOparater;
 import Controller.PlaceOrderManager;
 
 public class PlaceOrder extends JFrame {
@@ -39,6 +42,7 @@ public class PlaceOrder extends JFrame {
         headerPanel();
         leftFormPanel();
         rightButtonPanel();
+        // eventListeners();
 
     }
 
@@ -60,7 +64,6 @@ public class PlaceOrder extends JFrame {
 
         orderId = Components.createStyledLabel("Order ID:");
         orderIdValue = Components.createStyledLabel(PlaceOrderManager.getID() + "");
-        // orderIdValue.setText(fullOrderId);
 
         customerId = Components.createStyledLabel("Customer ID:");
         customerIdValue = Components.createStyledTextField("C");
@@ -114,7 +117,14 @@ public class PlaceOrder extends JFrame {
         subRightSouthPanel = new JPanel(new GridLayout(1, 2));
 
         netTotal = Components.createStyledLabel("Net Total:");
-        netTotalValue = Components.createStyledLabel("");
+        netTotalValue = Components.createStyledLabel("0.00");
+
+        qtyField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
+            }
+        });
 
         subRightSouthPanel.add(netTotal);
         subRightSouthPanel.add(netTotalValue);
@@ -123,5 +133,7 @@ public class PlaceOrder extends JFrame {
 
         add(subRightPanel, BorderLayout.EAST);
     }
+
+
 
 }
