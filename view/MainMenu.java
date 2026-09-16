@@ -2,7 +2,12 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.ModuleLayer.Controller;
 import javax.swing.*;
+
+import Controller.*;
+
+
 
 public class MainMenu extends JFrame {
 
@@ -10,7 +15,7 @@ public class MainMenu extends JFrame {
     private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
             btnExit;
 
-    private PlaceOrder placeOderObj;
+    
 
     public MainMenu() {
         setTitle("Home Page");
@@ -95,9 +100,7 @@ public class MainMenu extends JFrame {
         btnPlaceOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                placeOderObj = new PlaceOrder();
-                placeOderObj.setVisible(true);
-                dispose();
+                PanelOparater.openPlaceOrder();
 
             }
         });
