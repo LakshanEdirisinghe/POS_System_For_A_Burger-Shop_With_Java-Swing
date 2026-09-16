@@ -2,11 +2,9 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.lang.ModuleLayer.Controller;
 import javax.swing.*;
 
-import Controller.*;
-
+import Controller.PanelOparater;
 
 
 public class MainMenu extends JFrame {
@@ -15,7 +13,7 @@ public class MainMenu extends JFrame {
     private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
             btnExit;
 
-    
+    private PanelOparater panelOparater;
 
     public MainMenu() {
         setTitle("Home Page");
@@ -34,6 +32,7 @@ public class MainMenu extends JFrame {
         setupLeftPanel();
         setupRightPanel();
 
+        panelOparater = new PanelOparater();
         eventListeners();
     }
 
@@ -97,13 +96,43 @@ public class MainMenu extends JFrame {
 
     private void eventListeners() {
 
-        btnPlaceOrder.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        btnPlaceOrder.addActionListener(e -> openPlaceOrder());
+        btnBestCustomer.addActionListener(e -> openBestCustomer());
+        btnSearchOrder.addActionListener(e -> openSearchOrder());
+        btnCustomerDetails.addActionListener(e -> openSearchCustomer());
+        btnViewOrders.addActionListener(e -> openViewOrders());
+        btnUpdateOrder.addActionListener(e -> openUpdateDetails());
+        btnExit.addActionListener(e -> System.exit(0));
+    }
 
-                PanelOparater.openPlaceOrder();
+    private void openPlaceOrder() {
+        panelOparater.openPlaceOrder();
+        dispose();
+    }
 
-            }
-        });
+    private void openBestCustomer() {
+        panelOparater.openBestCustomer();
+        dispose();
+    }
+
+    private void openSearchOrder() {
+        panelOparater.openSearchOrder();
+        dispose();
+    }
+
+    private void openSearchCustomer() {
+        panelOparater.openSearchCustomer();
+        dispose();
+    }
+
+    private void openViewOrders() {
+        panelOparater.openViewOrders();
+        dispose();
+    }
+
+    private void openUpdateDetails() {
+        panelOparater.openUpdateDetails();
+        dispose();
     }
 
 }
