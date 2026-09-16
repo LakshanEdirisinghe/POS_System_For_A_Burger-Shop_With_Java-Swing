@@ -21,6 +21,15 @@ public class CustomerManager {
         System.out.println();
     }
 
+    public static Customer findCustomerById(String id) {
+        for (Customer customer : CustomerDataSet) {
+            if (customer.getId().equals(id)) {
+                return customer;
+            }
+        }
+        return null; // Return null if customer not found
+    }
+
 
 
 
