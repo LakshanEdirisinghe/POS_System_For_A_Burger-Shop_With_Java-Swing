@@ -9,8 +9,16 @@ public class CustomerManager {
     private static ArrayList<Customer> CustomerDataSet = new ArrayList<>();
 
 
-    public void addCustomer(Customer customer) {
+
+    public static void addCustomer(Customer customer) {
         CustomerDataSet.add(customer);
+    }
+
+    public static void printCustomerDataSet() {
+        for (Customer customer : CustomerDataSet) {
+            System.out.println(customer.getId() + " - " + customer.getName());
+        }
+        System.out.println("Total customers: " + CustomerDataSet.size());
     }
 
 
