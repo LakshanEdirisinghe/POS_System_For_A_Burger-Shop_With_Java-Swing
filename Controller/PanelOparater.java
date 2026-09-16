@@ -29,6 +29,9 @@ public class PanelOparater {
     public static void openUpdateDetails() {
         openWindow(new UpdateDetails());
     }
+    public static void openAddCustomer() {
+        openWindow(new AddCustomerForm());
+    }
 
     private static void openWindow(JFrame window) {
         window.setVisible(true);

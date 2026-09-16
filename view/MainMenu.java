@@ -91,6 +91,7 @@ public class MainMenu extends JFrame {
     private void eventListeners() {
 
         btnPlaceOrder.addActionListener(e -> openPlaceOrder());
+        btnAddCustomer.addActionListener(e -> openAddCustomer());
         btnBestCustomer.addActionListener(e -> openBestCustomer());
         btnSearchOrder.addActionListener(e -> openSearchOrder());
         btnCustomerDetails.addActionListener(e -> openSearchCustomer());
@@ -121,6 +122,11 @@ public class MainMenu extends JFrame {
 
     private void openViewOrders() {
         PanelOparater.openViewOrders();
+        dispose();
+    }
+
+    private void openAddCustomer() {
+        PanelOparater.openAddCustomer();
         dispose();
     }
 
