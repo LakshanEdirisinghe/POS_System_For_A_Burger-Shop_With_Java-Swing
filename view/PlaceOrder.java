@@ -11,9 +11,11 @@ import java.awt.event.KeyEvent;
 
 import util.*;
 // import Controller.PanelOparater;
-import model.OrderItem;
+// import Controller.OrderS;
+// import model.OrderItem;
 
 import Controller.PlaceOrderManager;
+import model.Order;
 
 public class PlaceOrder extends JFrame {
 
@@ -141,11 +143,12 @@ public class PlaceOrder extends JFrame {
 
         placeOrderButton.addActionListener(e -> {
             
-            PlaceOrderManager.placeOrder(new OrderItem(
+            PlaceOrderManager.placeOrder(new Order(
+
                 orderIdValue.getText(), 
                 customerIdValue.getText(), 
-                Integer.parseInt(qtyField.getText()), 
-                Double.parseDouble(netTotalValue.getText())));
+                OrderStatus.PREPARING, 
+                Integer.parseInt(qtyField.getText())));
         });
 
         // bToHome.addActionListener(e -> {

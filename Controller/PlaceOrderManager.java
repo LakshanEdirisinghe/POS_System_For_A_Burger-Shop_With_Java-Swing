@@ -8,16 +8,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import model.OrderItem;
-import view.PlaceOrder;
+import model.Order;
+// import view.PlaceOrder;
 
 public class PlaceOrderManager {
 
     private static final double BURGER_PRICE = 500.00;
 
-    private static ArrayList<OrderItem> placeOrderDataSet = new ArrayList<>();
+    private static ArrayList<Order> placeOrderDataSet = new ArrayList<>();
 
-    public static boolean placeOrder(OrderItem orderItem) {
+    public static boolean placeOrder(Order orderItem) {
 
 
         if(CustomerManager.findCustomerById(orderItem.getCustId()) == null) {
