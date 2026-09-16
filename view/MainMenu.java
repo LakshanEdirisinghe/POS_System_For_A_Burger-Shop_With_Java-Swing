@@ -1,9 +1,12 @@
 package view;
 
+
+
 import java.awt.*;
 import javax.swing.*;
 
 import Controller.PanelOparater;
+import util.Components;
 
 
 public class MainMenu extends JFrame {
@@ -62,13 +65,13 @@ public class MainMenu extends JFrame {
         btnPanel.setBorder(BorderFactory.createEmptyBorder(120, 120, 120, 120));
 
         // Buttons
-        btnPlaceOrder = createStyledButton("Place Order");
-        btnBestCustomer = createStyledButton("Find Best Customer");
-        btnSearchOrder = createStyledButton("Search Order");
-        btnCustomerDetails = createStyledButton("Search Customer Details");
-        btnViewOrders = createStyledButton("View Orders");
-        btnUpdateOrder = createStyledButton("Update Order Details");
-        btnExit = createStyledButton("Exit");
+        btnPlaceOrder = Components.createStyledButton("Place Order");
+        btnBestCustomer = Components.createStyledButton("Find Best Customer");
+        btnSearchOrder = Components.createStyledButton("Search Order");
+        btnCustomerDetails = Components.createStyledButton("Search Customer Details");
+        btnViewOrders = Components.createStyledButton("View Orders");
+        btnUpdateOrder = Components.createStyledButton("Update Order Details");
+        btnExit = Components.createStyledButton("Exit");
 
         btnPanel.add(btnPlaceOrder);
         btnPanel.add(btnBestCustomer);
@@ -83,14 +86,6 @@ public class MainMenu extends JFrame {
 
         subRightPanel.add(btnPanel, BorderLayout.CENTER);
         subRightPanel.add(exitPanel, BorderLayout.SOUTH);
-    }
-
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
     }
 
     private void eventListeners() {
