@@ -1,6 +1,7 @@
 import view.*;
 import Controller.*;
 import model.*;
+import util.*;
 
 class Main{
     public static void main(String[] args) {
@@ -10,6 +11,8 @@ class Main{
 
         //Temporary code to add a customer to the CustomerManager's dataset
         addCustomer();
+        //Temporary code to add an order to the PlaceOrderManager's dataset
+        addOrder();
         // CustomerManager.printCustomerDataSet();
 
         
@@ -23,5 +26,13 @@ class Main{
         CustomerManager.addCustomer(new Customer("C004", "Alice Williams"));
 
         
+    }
+
+    private static void addOrder() {
+
+
+        PlaceOrderManager.placeOrder(new Order("O001", "C001", OrderStatus.PREPARING, 2));
+        PlaceOrderManager.placeOrder(new Order("O002", "C002", OrderStatus.DELIVERED, 1));
+        PlaceOrderManager.placeOrder(new Order("O003", "C003", OrderStatus.CANCELLED, 3));
     }
 }
