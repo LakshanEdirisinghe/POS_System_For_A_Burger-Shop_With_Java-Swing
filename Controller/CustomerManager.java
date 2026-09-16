@@ -18,7 +18,7 @@ public class CustomerManager {
         for (Customer customer : CustomerDataSet) {
             System.out.println(customer.getId() + " - " + customer.getName());
         }
-        System.out.println("Total customers: " + CustomerDataSet.size());
+        System.out.println();
     }
 
 
