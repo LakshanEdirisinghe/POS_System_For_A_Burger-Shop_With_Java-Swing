@@ -10,7 +10,7 @@ class Main{
 
         //Temporary code to add a customer to the CustomerManager's dataset
         addCustomer();
-        CustomerManager.printCustomerDataSet();
+        // CustomerManager.printCustomerDataSet();
 
         
     }
