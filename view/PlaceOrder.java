@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 
-import util.Components;
+import util.*;
 import Controller.PlaceOrderManager;
 
 public class PlaceOrder extends JFrame {
@@ -69,7 +69,7 @@ public class PlaceOrder extends JFrame {
         qtyField = Components.createStyledTextField("");
 
         orderStatusLabel = Components.createStyledLabel("Order Status:");
-        orderStatusValue = Components.createStyledLabel("");
+        orderStatusValue = Components.createStyledLabel(" "+OrderStatus.PREPARING);
 
         subLeftNorthPanel = new JPanel();
         subLeftNorthPanel.setLayout(new GridLayout(2, 2));
