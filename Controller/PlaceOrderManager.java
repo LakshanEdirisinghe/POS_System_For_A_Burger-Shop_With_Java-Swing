@@ -17,27 +17,37 @@ public class PlaceOrderManager {
 
     private static ArrayList<Order> placeOrderDataSet = new ArrayList<>();
 
-    public static boolean placeOrder(Order orderItem) {
+    public static boolean placeOrder(Order order) {
 
+        System.out.println("Order ID: " + order.getOrderId());
+        System.out.println("Customer ID: " + order.getCustId());
+        System.out.println("Order Status: " + order.getOrderStatus());
+        System.out.println("Quantity: " + order.getQuantity());
 
-        if(CustomerManager.findCustomerById(orderItem.getCustId()) == null) {
-            JOptionPane.showMessageDialog(null, "Customer ID not found. Please enter a valid Customer ID.");
-            return false;
-        }
+        // if (CustomerManager.findCustomerById(order.getCustId()) == null) {
+        //     JOptionPane.showMessageDialog(null, "Customer ID not found. Please enter a valid Customer ID.");
+        //     return false;
+        // }
+
+        // if(order.getQuantity() <= 0) {
+        //     JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.");
+        //     return false;
+        // }
 
         // if (customerId.isEmpty() || qtyField.getText().isEmpty()) {
-        //     JOptionPane.showMessageDialog(null, "Please fill in all fields.");
-        //     return;
+        // JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+        // return;
         // }
         // if (Integer.parseInt(qtyField.getText()) <= 0) {
-        //     JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.");
-        //     return;
+        // JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.");
+        // return;
 
         // } else {
-        //     qty = Integer.parseInt(qtyField.getText());
+        // qty = Integer.parseInt(qtyField.getText());
         // }
 
-        return placeOrderDataSet.add(orderItem);
+        return true;
+        //placeOrderDataSet.add(orderItem);
     }
 
     public static String getID() {

@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import model.Customer;
 
 public class CustomerManager {
-    
+
     private static ArrayList<Customer> CustomerDataSet = new ArrayList<>();
-
-
 
     public static void addCustomer(Customer customer) {
         CustomerDataSet.add(customer);
@@ -30,8 +28,4 @@ public class CustomerManager {
         return null; // Return null if customer not found
     }
 
-
-
-
 }
-

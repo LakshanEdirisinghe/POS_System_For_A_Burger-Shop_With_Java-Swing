@@ -145,10 +145,17 @@ public class PlaceOrder extends JFrame {
             
             PlaceOrderManager.placeOrder(new Order(
 
-                orderIdValue.getText(), 
-                customerIdValue.getText(), 
-                OrderStatus.PREPARING, 
-                Integer.parseInt(qtyField.getText())));
+                "O001",
+                "C001",
+                OrderStatus.PREPARING,
+                8
+
+                // orderIdValue.getText(), 
+                // customerIdValue.getText(), 
+                // OrderStatus.PREPARING, 
+                // Integer.parseInt(qtyField.getText())));
+
+            ));
         });
 
         // bToHome.addActionListener(e -> {
