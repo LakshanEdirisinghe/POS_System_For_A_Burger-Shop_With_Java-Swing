@@ -10,7 +10,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import util.*;
-import Controller.PanelOparater;
+// import Controller.PanelOparater;
+import model.OrderItem;
+
 import Controller.PlaceOrderManager;
 
 public class PlaceOrder extends JFrame {
@@ -42,7 +44,7 @@ public class PlaceOrder extends JFrame {
         headerPanel();
         leftFormPanel();
         rightButtonPanel();
-        // eventListeners();
+        eventListeners();
 
     }
 
@@ -119,12 +121,7 @@ public class PlaceOrder extends JFrame {
         netTotal = Components.createStyledLabel("Net Total:");
         netTotalValue = Components.createStyledLabel(" 0.00");
 
-        qtyField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
-            }
-        });
+
 
         subRightSouthPanel.add(netTotal);
         subRightSouthPanel.add(netTotalValue);
@@ -132,6 +129,32 @@ public class PlaceOrder extends JFrame {
         subRightPanel.add(subRightSouthPanel, BorderLayout.SOUTH);
 
         add(subRightPanel, BorderLayout.EAST);
+    }
+
+    private void eventListeners() {
+        qtyField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
+            }
+        });
+
+        placeOrderButton.addActionListener(e -> {
+            
+            PlaceOrderManager.placeOrder(new OrderItem(
+                orderIdValue.getText(), 
+                customerIdValue.getText(), 
+                Integer.parseInt(qtyField.getText()), 
+                Double.parseDouble(netTotalValue.getText())));
+        });
+
+        // bToHome.addActionListener(e -> {
+        //     PanelOparater.backToHome(this);
+        // });
+
+        // cancel.addActionListener(e -> {
+        //     PanelOparater.cancel(this);
+        // });
     }
 
 
