@@ -12,7 +12,7 @@ import view.PlaceOrder;
 public class PlaceOrderManager {
 
     private static final double BURGER_PRICE = 500.00;
-    
+
     private static ArrayList<PlaceOrder> placeOrderDataSet = new ArrayList<>();
 
     public boolean addPlaceOrder(PlaceOrder placeOrder) {
@@ -46,7 +46,7 @@ public class PlaceOrderManager {
 
     public static  void updateNetTotal(JTextField qtyField, JLabel netTotalValue) {
         double total = BURGER_PRICE * Double.parseDouble(qtyField.getText());
-        netTotalValue.setText(String.format("%.2f", total));
+        netTotalValue.setText(String.format(" %.2f", total));
     }
 
     

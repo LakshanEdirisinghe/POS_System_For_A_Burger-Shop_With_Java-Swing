@@ -117,7 +117,7 @@ public class PlaceOrder extends JFrame {
         subRightSouthPanel = new JPanel(new GridLayout(1, 2));
 
         netTotal = Components.createStyledLabel("Net Total:");
-        netTotalValue = Components.createStyledLabel("0.00");
+        netTotalValue = Components.createStyledLabel(" 0.00");
 
         qtyField.addKeyListener(new KeyAdapter() {
             @Override
