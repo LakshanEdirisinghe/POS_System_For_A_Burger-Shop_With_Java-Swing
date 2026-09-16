@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import java.awt.*;
 
 import util.Components;
+import Controller.PlaceOrderManager;
 
 public class PlaceOrder extends JFrame {
 
@@ -58,7 +59,7 @@ public class PlaceOrder extends JFrame {
         subRightPanel = new JPanel();
 
         orderId = Components.createStyledLabel("Order ID:");
-        orderIdValue = Components.createStyledLabel("");
+        orderIdValue = Components.createStyledLabel("O"+PlaceOrderManager.getID());
         // orderIdValue.setText(fullOrderId);
 
         customerId = Components.createStyledLabel("Customer ID:");
