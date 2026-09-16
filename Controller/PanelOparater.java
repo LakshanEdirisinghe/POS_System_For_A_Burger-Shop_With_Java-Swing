@@ -4,12 +4,14 @@ import view.PlaceOrder;
 
 public class PanelOparater {
 
-    private static PlaceOrder placeOderObj;
+    private static PlaceOrder placeOrder;
 
     public static void openPlaceOrder() {
-        placeOderObj = new PlaceOrder();
-        placeOderObj.setVisible(true);
+        if (placeOrder == null || !placeOrder.isDisplayable()) {
+            placeOrder = new PlaceOrder();
+        }
 
+        placeOrder.setVisible(true);
     }
 
 }
