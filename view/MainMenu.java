@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class MainMenu extends JFrame {
@@ -8,6 +9,8 @@ public class MainMenu extends JFrame {
     private JPanel subLeftPanel, subRightPanel, btnPanel;
     private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
             btnExit;
+
+    private PlaceOrder placeOderObj;
 
     public MainMenu() {
         setTitle("Home Page");
@@ -25,6 +28,8 @@ public class MainMenu extends JFrame {
         // === Components ===
         setupLeftPanel();
         setupRightPanel();
+
+        eventListeners();
     }
 
     private void setupLeftPanel() {
@@ -83,6 +88,19 @@ public class MainMenu extends JFrame {
         button.setForeground(Color.WHITE);
         button.setFont(new Font("Quicksand", Font.BOLD, 20));
         return button;
+    }
+
+    private void eventListeners() {
+
+        btnPlaceOrder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                placeOderObj = new PlaceOrder();
+                placeOderObj.setVisible(true);
+                dispose();
+
+            }
+        });
     }
 
 }
