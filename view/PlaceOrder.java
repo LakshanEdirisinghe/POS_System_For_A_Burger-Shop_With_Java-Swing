@@ -136,25 +136,7 @@ public class PlaceOrder extends JFrame {
         qtyField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                String text = qtyField.getText().trim();
-
-                if (text.isEmpty()) {
-                    netTotalValue.setText(" 0.00");
-                    return;
-                }
-
-                try {
-                    int qty = Integer.parseInt(text);
-
-                    if (qty > 0) {
-                        PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
-                    } else {
-                        netTotalValue.setText(" 0.00");
-                    }
-                } catch (NumberFormatException ex) {
-                    netTotalValue.setText(" 0.00");
-                   
-                }
+                PlaceOrderManager.netTotTigger(qtyField,netTotalValue);
             }
         });
 

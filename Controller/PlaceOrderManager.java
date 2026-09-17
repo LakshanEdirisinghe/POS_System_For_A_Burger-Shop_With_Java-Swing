@@ -9,8 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import model.Order;
-// import view.PlaceOrder;
-import util.OrderStatus;
 
 public class PlaceOrderManager {
 
@@ -85,6 +83,29 @@ public class PlaceOrderManager {
             System.out.println("Order Status: " + order.getOrderStatus());
             System.out.println("---------------------------");
         });
+    }
+
+    public static void netTotTigger(JTextField qtyField, JLabel netTotalValue) {
+
+        String text = qtyField.getText().trim();
+
+        if (text.isEmpty()) {
+            netTotalValue.setText(" 0.00");
+            return;
+        }
+
+        try {
+            int qty = Integer.parseInt(text);
+
+            if (qty > 0) {
+                PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
+            } else {
+                netTotalValue.setText(" 0.00");
+            }
+        } catch (NumberFormatException ex) {
+            netTotalValue.setText(" 0.00");
+
+        }
     }
 
 }
