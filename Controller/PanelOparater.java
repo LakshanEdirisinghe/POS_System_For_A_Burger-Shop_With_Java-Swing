@@ -1,6 +1,6 @@
 package Controller;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import view.*;
 
@@ -8,6 +8,7 @@ public class PanelOparater {
 
     public static void openPlaceOrder() {
         openWindow(new PlaceOrder());
+        
     }
 
     public static void openBestCustomer() {

@@ -153,7 +153,7 @@ public class PlaceOrder extends JFrame {
                     }
                 } catch (NumberFormatException ex) {
                     netTotalValue.setText(" 0.00");
-                    // optionally show a message or clear the field
+                   
                 }
             }
         });
