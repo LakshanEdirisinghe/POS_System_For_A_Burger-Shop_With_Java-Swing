@@ -34,6 +34,11 @@ public class PanelOparater {
         openWindow(new AddCustomerForm());
     }
 
+    public static void backToHome(JFrame currentWindow) {
+        new MainMenu().setVisible(true);
+        currentWindow.dispose();
+    }
+
     private static void openWindow(JFrame window) {
         window.setVisible(true);
     }

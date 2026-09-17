@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import Controller.PanelOparater;
 import util.*;
 // import Controller.PlaceOrderManager;
 // import Controller.OrderS;
@@ -136,7 +137,7 @@ public class PlaceOrder extends JFrame {
         qtyField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                PlaceOrderManager.netTotTigger(qtyField,netTotalValue);
+                PlaceOrderManager.netTotTigger(qtyField, netTotalValue);
             }
         });
 
@@ -152,9 +153,8 @@ public class PlaceOrder extends JFrame {
             }
 
         });
-        // bToHome.addActionListener(e -> {
-        // PanelOparater.backToHome(this);
-        // });
+        
+        bToHome.addActionListener(e -> PanelOparater.backToHome(this));
 
         // OrderStatus.PREPARING, quantity));
         // cancel.addActionListener(e -> {
