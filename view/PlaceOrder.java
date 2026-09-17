@@ -153,13 +153,10 @@ public class PlaceOrder extends JFrame {
             }
 
         });
-        
-        bToHome.addActionListener(e -> PanelOparater.backToHome(this));
 
-        // OrderStatus.PREPARING, quantity));
-        // cancel.addActionListener(e -> {
-        // PanelOparater.cancel(this);
-        // });
+        bToHome.addActionListener(e -> PanelOparater.backToHome(this));
+        cancel.addActionListener(e -> PanelOparater.backToHome(this));
+
     }
 
 }
