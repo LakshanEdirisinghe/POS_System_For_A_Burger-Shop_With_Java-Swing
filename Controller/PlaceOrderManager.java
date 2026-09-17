@@ -20,10 +20,21 @@ public class PlaceOrderManager {
 
     public static boolean placeOrder(Order order) {
 
-        placeOrderDataSet.add(order);
-        // String quantityText = qtyField.getText().trim();
+        // placeOrderDataSet.add(order);
 
-        // if (quantityText.isEmpty()) {
+        if (order.getQuantity() <= 0) {
+            JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.",
+                    "Invalid quantity",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (order.getCustId().trim().substring(1).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Customer ID cannot be empty.",
+                    "Invalid Customer ID",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         // JOptionPane.showMessageDialog(this, "Please enter the burger quantity.",
         // "Invalid quantity",
         // JOptionPane.ERROR_MESSAGE);
@@ -94,7 +105,7 @@ public class PlaceOrderManager {
         netTotalValue.setText(String.format(" %.2f", total));
     }
 
-    public static void displayOrderDetails(){
+    public static void displayOrderDetails() {
         placeOrderDataSet.forEach(order -> {
             System.out.println("Order ID: " + order.getOrderId());
             System.out.println("Customer ID: " + order.getCustId());

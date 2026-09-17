@@ -142,14 +142,14 @@ public class PlaceOrder extends JFrame {
 
         placeOrderButton.addActionListener(e -> {
             if (PlaceOrderManager.placeOrder(new Order(
-                orderIdValue.getText(), 
-                customerIdValue.getText(),
-                OrderStatus.PREPARING,
-                Integer.parseInt(qtyField.getText().trim())))) {
+                    orderIdValue.getText(),
+                    customerIdValue.getText(),
+                    OrderStatus.PREPARING,
+                    Integer.parseInt(qtyField.getText().trim().isEmpty() ? "0" : qtyField.getText().trim())))) {
 
                 JOptionPane.showMessageDialog(this, "Order placed successfully!", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
-                dispose();
+                // dispose();
             }
             PlaceOrderManager.displayOrderDetails();
         });
