@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import model.Order;
 // import view.PlaceOrder;
+import util.OrderStatus;
 
 public class PlaceOrderManager {
 
@@ -19,35 +20,39 @@ public class PlaceOrderManager {
 
     public static boolean placeOrder(Order order) {
 
-        System.out.println("Order ID: " + order.getOrderId());
-        System.out.println("Customer ID: " + order.getCustId());
-        System.out.println("Order Status: " + order.getOrderStatus());
-        System.out.println("Quantity: " + order.getQuantity());
+        placeOrderDataSet.add(order);
+        // String quantityText = qtyField.getText().trim();
 
-        // if (CustomerManager.findCustomerById(order.getCustId()) == null) {
-        //     JOptionPane.showMessageDialog(null, "Customer ID not found. Please enter a valid Customer ID.");
-        //     return false;
-        // }
-
-        // if(order.getQuantity() <= 0) {
-        //     JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.");
-        //     return false;
-        // }
-
-        // if (customerId.isEmpty() || qtyField.getText().isEmpty()) {
-        // JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+        // if (quantityText.isEmpty()) {
+        // JOptionPane.showMessageDialog(this, "Please enter the burger quantity.",
+        // "Invalid quantity",
+        // JOptionPane.ERROR_MESSAGE);
+        // qtyField.requestFocusInWindow();
         // return;
         // }
-        // if (Integer.parseInt(qtyField.getText()) <= 0) {
-        // JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.");
-        // return;
 
-        // } else {
-        // qty = Integer.parseInt(qtyField.getText());
+        // try {
+        // int quantity = Integer.parseInt(quantityText);
+        // if (quantity <= 0) {
+        // JOptionPane.showMessageDialog(this, "Quantity must be greater than zero.",
+        // "Invalid quantity",
+        // JOptionPane.ERROR_MESSAGE);
+        // qtyField.requestFocusInWindow();
+        // return;
+        // }
+
+        // PlaceOrderManager.placeOrder(new Order(orderIdValue.getText(),
+        // customerIdValue.getText(),
+        // OrderStatus.PREPARING, quantity));
+        // } catch (NumberFormatException ex) {
+        // JOptionPane.showMessageDialog(this, "Quantity must be a whole number.",
+        // "Invalid quantity",
+        // JOptionPane.ERROR_MESSAGE);
+        // qtyField.requestFocusInWindow();
         // }
 
         return true;
-        //placeOrderDataSet.add(orderItem);
+        // placeOrderDataSet.add(orderItem);
     }
 
     public static String getID() {
@@ -76,8 +81,27 @@ public class PlaceOrderManager {
     }
 
     public static void updateNetTotal(JTextField qtyField, JLabel netTotalValue) {
-        double total = BURGER_PRICE * Double.parseDouble(qtyField.getText());
+        String quantityText = qtyField.getText().trim();
+        double quantity;
+
+        try {
+            quantity = quantityText.isEmpty() ? 0 : Double.parseDouble(quantityText);
+        } catch (NumberFormatException ex) {
+            quantity = 0;
+        }
+
+        double total = BURGER_PRICE * quantity;
         netTotalValue.setText(String.format(" %.2f", total));
+    }
+
+    public static void displayOrderDetails(){
+        placeOrderDataSet.forEach(order -> {
+            System.out.println("Order ID: " + order.getOrderId());
+            System.out.println("Customer ID: " + order.getCustId());
+            System.out.println("Quantity: " + order.getQuantity());
+            System.out.println("Order Status: " + order.getOrderStatus());
+            System.out.println("---------------------------");
+        });
     }
 
 }

@@ -3,6 +3,7 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import util.*;
-// import Controller.PanelOparater;
+// import Controller.PlaceOrderManager;
 // import Controller.OrderS;
 // import model.OrderItem;
 
@@ -76,7 +77,7 @@ public class PlaceOrder extends JFrame {
         qtyField = Components.createStyledTextField("");
 
         orderStatusLabel = Components.createStyledLabel("Order Status:");
-        orderStatusValue = Components.createStyledLabel(" "+OrderStatus.PREPARING);
+        orderStatusValue = Components.createStyledLabel(" " + OrderStatus.PREPARING);
 
         subLeftNorthPanel = new JPanel();
         subLeftNorthPanel.setLayout(new GridLayout(2, 2));
@@ -123,8 +124,6 @@ public class PlaceOrder extends JFrame {
         netTotal = Components.createStyledLabel("Net Total:");
         netTotalValue = Components.createStyledLabel(" 0.00");
 
-
-
         subRightSouthPanel.add(netTotal);
         subRightSouthPanel.add(netTotalValue);
 
@@ -142,31 +141,59 @@ public class PlaceOrder extends JFrame {
         });
 
         placeOrderButton.addActionListener(e -> {
-            
-            PlaceOrderManager.placeOrder(new Order(
-
-                "O001",
-                "C001",
+            if (PlaceOrderManager.placeOrder(new Order(
+                orderIdValue.getText(), 
+                customerIdValue.getText(),
                 OrderStatus.PREPARING,
-                8
+                Integer.parseInt(qtyField.getText().trim())))) {
 
-                // orderIdValue.getText(), 
-                // customerIdValue.getText(), 
-                // OrderStatus.PREPARING, 
-                // Integer.parseInt(qtyField.getText())));
-
-            ));
+                JOptionPane.showMessageDialog(this, "Order placed successfully!", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }
+            PlaceOrderManager.displayOrderDetails();
         });
-
         // bToHome.addActionListener(e -> {
-        //     PanelOparater.backToHome(this);
+        // PanelOparater.backToHome(this);
         // });
 
+        // OrderStatus.PREPARING, quantity));
         // cancel.addActionListener(e -> {
-        //     PanelOparater.cancel(this);
+        // PanelOparater.cancel(this);
         // });
     }
 
+    // private void placeOrder() {
+    // String quantityText = qtyField.getText().trim();
 
+    // if (quantityText.isEmpty()) {
+    // JOptionPane.showMessageDialog(this, "Please enter the burger quantity.",
+    // "Invalid quantity",
+    // JOptionPane.ERROR_MESSAGE);
+    // qtyField.requestFocusInWindow();
+    // return;
+    // }
+
+    // try {
+    // int quantity = Integer.parseInt(quantityText);
+    // if (quantity <= 0) {
+    // JOptionPane.showMessageDialog(this, "Quantity must be greater than zero.",
+    // "Invalid quantity",
+    // JOptionPane.ERROR_MESSAGE);
+    // qtyField.requestFocusInWindow();
+    // return;
+    // }
+
+    // PlaceOrderManager.placeOrder(new Order(orderIdValue.getText(),
+    // customerIdValue.getText(),
+    // OrderStatus.PREPARING, quantity));
+    // } catch (NumberFormatException ex) {
+    // JOptionPane.showMessageDialog(this, "Quantity must be a whole number.",
+    // "Invalid quantity",
+    // JOptionPane.ERROR_MESSAGE);
+    // qtyField.requestFocusInWindow();
+    // }
+
+    // }
 
 }
