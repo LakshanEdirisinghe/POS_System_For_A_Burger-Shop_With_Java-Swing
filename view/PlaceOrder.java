@@ -149,9 +149,8 @@ public class PlaceOrder extends JFrame {
 
                 JOptionPane.showMessageDialog(this, "Order placed successfully!", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
-                // dispose();
             }
-            PlaceOrderManager.displayOrderDetails();
+
         });
         // bToHome.addActionListener(e -> {
         // PanelOparater.backToHome(this);
@@ -163,37 +162,5 @@ public class PlaceOrder extends JFrame {
         // });
     }
 
-    // private void placeOrder() {
-    // String quantityText = qtyField.getText().trim();
-
-    // if (quantityText.isEmpty()) {
-    // JOptionPane.showMessageDialog(this, "Please enter the burger quantity.",
-    // "Invalid quantity",
-    // JOptionPane.ERROR_MESSAGE);
-    // qtyField.requestFocusInWindow();
-    // return;
-    // }
-
-    // try {
-    // int quantity = Integer.parseInt(quantityText);
-    // if (quantity <= 0) {
-    // JOptionPane.showMessageDialog(this, "Quantity must be greater than zero.",
-    // "Invalid quantity",
-    // JOptionPane.ERROR_MESSAGE);
-    // qtyField.requestFocusInWindow();
-    // return;
-    // }
-
-    // PlaceOrderManager.placeOrder(new Order(orderIdValue.getText(),
-    // customerIdValue.getText(),
-    // OrderStatus.PREPARING, quantity));
-    // } catch (NumberFormatException ex) {
-    // JOptionPane.showMessageDialog(this, "Quantity must be a whole number.",
-    // "Invalid quantity",
-    // JOptionPane.ERROR_MESSAGE);
-    // qtyField.requestFocusInWindow();
-    // }
-
-    // }
 
 }

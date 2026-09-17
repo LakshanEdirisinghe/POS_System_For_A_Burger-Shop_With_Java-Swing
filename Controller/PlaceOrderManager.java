@@ -20,8 +20,6 @@ public class PlaceOrderManager {
 
     public static boolean placeOrder(Order order) {
 
-        // placeOrderDataSet.add(order);
-
         if (order.getQuantity() <= 0) {
             JOptionPane.showMessageDialog(null, "Quantity must be greater than zero.",
                     "Invalid quantity",
@@ -35,35 +33,9 @@ public class PlaceOrderManager {
                     JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        // JOptionPane.showMessageDialog(this, "Please enter the burger quantity.",
-        // "Invalid quantity",
-        // JOptionPane.ERROR_MESSAGE);
-        // qtyField.requestFocusInWindow();
-        // return;
-        // }
 
-        // try {
-        // int quantity = Integer.parseInt(quantityText);
-        // if (quantity <= 0) {
-        // JOptionPane.showMessageDialog(this, "Quantity must be greater than zero.",
-        // "Invalid quantity",
-        // JOptionPane.ERROR_MESSAGE);
-        // qtyField.requestFocusInWindow();
-        // return;
-        // }
+        return placeOrderDataSet.add(order);
 
-        // PlaceOrderManager.placeOrder(new Order(orderIdValue.getText(),
-        // customerIdValue.getText(),
-        // OrderStatus.PREPARING, quantity));
-        // } catch (NumberFormatException ex) {
-        // JOptionPane.showMessageDialog(this, "Quantity must be a whole number.",
-        // "Invalid quantity",
-        // JOptionPane.ERROR_MESSAGE);
-        // qtyField.requestFocusInWindow();
-        // }
-
-        return true;
-        // placeOrderDataSet.add(orderItem);
     }
 
     public static String getID() {
