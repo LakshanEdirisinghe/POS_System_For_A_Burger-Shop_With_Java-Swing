@@ -139,7 +139,7 @@ public class PlaceOrder extends JFrame {
                 String text = qtyField.getText().trim();
 
                 if (text.isEmpty()) {
-                    netTotalValue.setText("0.00");
+                    netTotalValue.setText(" 0.00");
                     return;
                 }
 
