@@ -86,12 +86,13 @@ public class AddCustomerForm extends JFrame {
         //         "Customer added successfully.",
         //         "Success",
         //         JOptionPane.INFORMATION_MESSAGE);
+        CustomerManager.printCustomerDataSet();
 
         clearFields();
     }
 
     private void clearFields() {
-        customerIdField.setText("");
+        customerIdField.setText("C");
         customerNameField.setText("");
         customerIdField.requestFocus();
     }

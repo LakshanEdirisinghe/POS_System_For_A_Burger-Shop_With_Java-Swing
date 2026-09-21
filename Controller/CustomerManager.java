@@ -20,13 +20,21 @@ public class CustomerManager {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
+        if(findCustomerById(customer.getId()) != null) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Customer ID already exists.",
+                    "Validation Error",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         CustomerDataSet.add(customer);
 
-        JOptionPane.showMessageDialog(
-                null,
-                "Customer added successfully.",
-                "Success",
-                JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(
+        //         null,
+        //         "Customer added successfully.",
+        //         "Success",
+        //         JOptionPane.INFORMATION_MESSAGE);
 
     }
 
