@@ -28,13 +28,17 @@ public class CustomerManager {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
-        CustomerDataSet.add(customer);
+        boolean check=CustomerDataSet.add(customer);
 
-        // JOptionPane.showMessageDialog(
+        // if (check) {
+
+        //     JOptionPane.showMessageDialog(
         //         null,
         //         "Customer added successfully.",
         //         "Success",
         //         JOptionPane.INFORMATION_MESSAGE);
+            
+        // }
 
     }
 
