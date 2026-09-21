@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import model.Customer;
 
 public class CustomerManager {
@@ -9,6 +11,15 @@ public class CustomerManager {
     private static ArrayList<Customer> CustomerDataSet = new ArrayList<>();
 
     public static void addCustomer(Customer customer) {
+
+        if (customer.getId().substring(1).isEmpty() || customer.getName().isEmpty()) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Please enter both the customer ID and name.",
+                    "Validation Error",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         CustomerDataSet.add(customer);
     }
 

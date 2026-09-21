@@ -10,7 +10,7 @@ public class AddCustomerForm extends JFrame {
 
     private JButton addButton, cancelButton;
 
-    private final JTextField customerIdField = new JTextField(20);
+    private final JTextField customerIdField = new JTextField("C",20);
     private final JTextField customerNameField = new JTextField(20);
 
     public AddCustomerForm() {
@@ -69,25 +69,25 @@ public class AddCustomerForm extends JFrame {
         String customerId = customerIdField.getText().trim();
         String customerName = customerNameField.getText().trim();
 
-        if (customerId.isEmpty() || customerName.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Please enter both the customer ID and name.",
-                    "Validation Error",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        // if (customerId.isEmpty() || customerName.isEmpty()) {
+        //     JOptionPane.showMessageDialog(
+        //             this,
+        //             "Please enter both the customer ID and name.",
+        //             "Validation Error",
+        //             JOptionPane.WARNING_MESSAGE);
+        //     return;
+        // }
 
         Customer customer = new Customer(customerId, customerName);
         CustomerManager.addCustomer(customer);
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Customer added successfully.",
-                "Success",
-                JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(
+        //         this,
+        //         "Customer added successfully.",
+        //         "Success",
+        //         JOptionPane.INFORMATION_MESSAGE);
 
-        clearFields();
+        // clearFields();
     }
 
     private void clearFields() {
