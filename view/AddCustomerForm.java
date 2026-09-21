@@ -87,14 +87,14 @@ public class AddCustomerForm extends JFrame {
         //         "Success",
         //         JOptionPane.INFORMATION_MESSAGE);
 
-        // clearFields();
+        clearFields();
     }
 
-    // private void clearFields() {
-    //     customerIdField.setText("");
-    //     customerNameField.setText("");
-    //     customerIdField.requestFocus();
-    // }
+    private void clearFields() {
+        customerIdField.setText("");
+        customerNameField.setText("");
+        customerIdField.requestFocus();
+    }
 
     private void eventListeners() {
         addButton.addActionListener(event -> addCustomer());
