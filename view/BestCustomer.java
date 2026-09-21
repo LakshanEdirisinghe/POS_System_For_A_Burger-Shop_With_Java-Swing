@@ -8,6 +8,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import java.awt.*;
+import Controller.PlaceOrderManager;
+import Controller.PanelOparater;
 
 public class BestCustomer extends JFrame {
 
@@ -26,7 +28,7 @@ public class BestCustomer extends JFrame {
         setVisible(true);
 
         topPanel();
-        dataTable();
+        dataTableLoder();
         backBtn();
 
     }
@@ -44,33 +46,22 @@ public class BestCustomer extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
-    public void dataTable() {
-        // --- Center panel ---
+    private void dataTableLoder() {
         centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(Color.WHITE);
 
-
-        // --- Prepare data for JTable ---
-        String[] columnNames = { "Customer ID", "Name", "Total" };
-        Object[][] tableData = new Object[6][3];
-
-
-        JTable table = new JTable(tableData, columnNames);
-        table.setFont(new Font("Quicksand", Font.PLAIN, 18));
-        table.setRowHeight(30);
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        centerPanel.add(scrollPane, BorderLayout.CENTER);
-
+        PlaceOrderManager.bestCustomer(centerPanel);
         add(centerPanel, BorderLayout.CENTER);
     }
 
-     private void backBtn() {
+    private void backBtn() {
         southJPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         back = createStyledButton("Back");
         southJPanel.add(back);
         add(southJPanel, BorderLayout.SOUTH);
+
+        back.addActionListener(e -> PanelOparater.backToHome(this));
 
     }
 
@@ -81,6 +72,5 @@ public class BestCustomer extends JFrame {
         button.setFont(new Font("Quicksand", Font.BOLD, 20));
         return button;
     }
-
 
 }

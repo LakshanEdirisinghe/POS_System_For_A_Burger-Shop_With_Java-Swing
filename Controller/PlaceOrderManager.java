@@ -1,13 +1,15 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.awt.BorderLayout;
+import java.awt.Color;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
+import model.Customer;
 import model.Order;
 
 public class PlaceOrderManager {
@@ -106,6 +108,53 @@ public class PlaceOrderManager {
             netTotalValue.setText(" 0.00");
 
         }
+    }
+
+    public static void bestCustomer(JPanel centerPanel) {
+        if (centerPanel == null) {
+            return;
+        }
+
+        centerPanel.removeAll();
+        centerPanel.setLayout(new BorderLayout());
+        centerPanel.setBackground(Color.WHITE);
+
+        Map<String, Integer> customerTotals = new HashMap<>();
+
+        for (Order order : placeOrderDataSet) {
+            if (order == null || order.getCustId() == null) {
+                continue;
+            }
+
+            String customerId = order.getCustId().trim();
+            if (!customerId.isEmpty()) {
+                customerTotals.merge(customerId, order.getQuantity(), Integer::sum);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> sortedCustomers = new ArrayList<>(customerTotals.entrySet());
+        sortedCustomers.sort((left, right) -> Integer.compare(right.getValue(), left.getValue()));
+
+        String[] columnNames = {"Customer ID", "Name", "Total"};
+        Object[][] tableData = new Object[sortedCustomers.size()][3];
+
+        for (int i = 0; i < sortedCustomers.size(); i++) {
+            String customerId = sortedCustomers.get(i).getKey();
+            Customer customer = CustomerManager.findCustomerById(customerId);
+
+            tableData[i][0] = customerId;
+            tableData[i][1] = customer != null ? customer.getName() : "Unknown";
+            tableData[i][2] = String.format("%.2f", sortedCustomers.get(i).getValue() * BURGER_PRICE);
+        }
+
+        JTable table = new JTable(tableData, columnNames);
+        table.setFont(new java.awt.Font("Quicksand", java.awt.Font.PLAIN, 18));
+        table.setRowHeight(30);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
+        centerPanel.revalidate();
+        centerPanel.repaint();
     }
 
 }
