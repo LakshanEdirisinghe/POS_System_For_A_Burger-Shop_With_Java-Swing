@@ -21,6 +21,13 @@ public class CustomerManager {
             return;
         }
         CustomerDataSet.add(customer);
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Customer added successfully.",
+                "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public static void printCustomerDataSet() {

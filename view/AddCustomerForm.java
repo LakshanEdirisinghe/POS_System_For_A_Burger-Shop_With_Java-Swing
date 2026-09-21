@@ -90,11 +90,11 @@ public class AddCustomerForm extends JFrame {
         // clearFields();
     }
 
-    private void clearFields() {
-        customerIdField.setText("");
-        customerNameField.setText("");
-        customerIdField.requestFocus();
-    }
+    // private void clearFields() {
+    //     customerIdField.setText("");
+    //     customerNameField.setText("");
+    //     customerIdField.requestFocus();
+    // }
 
     private void eventListeners() {
         addButton.addActionListener(event -> addCustomer());
