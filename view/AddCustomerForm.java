@@ -1,6 +1,7 @@
 package view;
 
 import Controller.CustomerManager;
+import Controller.PanelOparater;
 import model.Customer;
 
 import javax.swing.*;
@@ -85,7 +86,7 @@ public class AddCustomerForm extends JFrame {
 
     private void eventListeners() {
         addButton.addActionListener(event -> addCustomer());
-        cancelButton.addActionListener(event -> dispose());
+        cancelButton.addActionListener(e -> PanelOparater.backToHome(this));
 
     }
 }
