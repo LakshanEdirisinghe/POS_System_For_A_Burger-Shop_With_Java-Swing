@@ -8,6 +8,8 @@ import java.awt.*;
 
 public class AddCustomerForm extends JFrame {
 
+    private JButton addButton, cancelButton;
+
     private final JTextField customerIdField = new JTextField(20);
     private final JTextField customerNameField = new JTextField(20);
 
@@ -19,6 +21,7 @@ public class AddCustomerForm extends JFrame {
         setResizable(false);
 
         createForm();
+        eventListeners();
     }
 
     private void createForm() {
@@ -32,8 +35,8 @@ public class AddCustomerForm extends JFrame {
         JLabel idLabel = new JLabel("Customer ID:");
         JLabel nameLabel = new JLabel("Customer Name:");
 
-        JButton addButton = new JButton("Add Customer");
-        JButton cancelButton = new JButton("Cancel");
+        addButton = new JButton("Add Customer");
+        cancelButton = new JButton("Cancel");
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -60,8 +63,6 @@ public class AddCustomerForm extends JFrame {
 
         add(panel);
 
-        addButton.addActionListener(event -> addCustomer());
-        cancelButton.addActionListener(event -> dispose());
     }
 
     private void addCustomer() {
@@ -73,8 +74,7 @@ public class AddCustomerForm extends JFrame {
                     this,
                     "Please enter both the customer ID and name.",
                     "Validation Error",
-                    JOptionPane.WARNING_MESSAGE
-            );
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -85,8 +85,7 @@ public class AddCustomerForm extends JFrame {
                 this,
                 "Customer added successfully.",
                 "Success",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+                JOptionPane.INFORMATION_MESSAGE);
 
         clearFields();
     }
@@ -95,5 +94,11 @@ public class AddCustomerForm extends JFrame {
         customerIdField.setText("");
         customerNameField.setText("");
         customerIdField.requestFocus();
+    }
+
+    private void eventListeners() {
+        addButton.addActionListener(event -> addCustomer());
+        cancelButton.addActionListener(event -> dispose());
+
     }
 }

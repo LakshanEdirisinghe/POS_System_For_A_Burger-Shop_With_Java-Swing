@@ -151,6 +151,7 @@ public class PlaceOrder extends JFrame {
                 JOptionPane.showMessageDialog(this, "Order placed successfully!", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+            // PlaceOrderManager.displayOrderDetails();
 
         });
 
