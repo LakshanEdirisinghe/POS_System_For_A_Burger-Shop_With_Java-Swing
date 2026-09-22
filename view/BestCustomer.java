@@ -52,6 +52,7 @@ public class BestCustomer extends JFrame {
         centerPanel.setBackground(Color.WHITE);
 
         PlaceOrderManager.bestCustomer(centerPanel);
+        
         add(centerPanel, BorderLayout.CENTER);
     }
 

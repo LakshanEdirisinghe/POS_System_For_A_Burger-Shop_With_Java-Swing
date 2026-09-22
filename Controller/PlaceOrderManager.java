@@ -112,6 +112,7 @@ public class PlaceOrderManager {
 
     public static void bestCustomer(JPanel centerPanel) {
 
+
         if (placeOrderDataSet.isEmpty()) {
             JLabel noDataLabel = new JLabel("No orders placed yet...", JLabel.CENTER);
             noDataLabel.setFont(new java.awt.Font("Quicksand", java.awt.Font.BOLD, 30));
@@ -119,6 +120,53 @@ public class PlaceOrderManager {
             return;
         }
 
+        ArrayList<Order> tempOrderDataSet = new ArrayList<>(placeOrderDataSet);
+        ArrayList<Order> uniqueOrders = new ArrayList<>();
+
+        
+
+        // double price=0.0;
+        toSort(tempOrderDataSet);
+
+        for (Order order : tempOrderDataSet) {
+
+            // for (int i = 0; i < tempOrderDataSet.size(); i++) {
+                
+            // }
+            
+            // if (order.getCustId().equalsIgnoreCase("c001")) {
+            //     price+= (order.getQuantity()*500);
+                
+            // }
+
+            System.out.println(order.getQuantity());
+            
+        }
+        // System.out.println();
+
+        
+
+
+
+    }
+
+    private static void toSort(ArrayList<Order> tempOrderDataSet ){
+
+        for (int i = 0; i < tempOrderDataSet.size(); i++) {
+
+            for (int j = i + 1; j < tempOrderDataSet.size(); j++) {
+
+                if (tempOrderDataSet.get(i).getQuantity() > tempOrderDataSet.get(j).getQuantity()) {
+                    Order temp = tempOrderDataSet.get(i);
+                    tempOrderDataSet.set(i, tempOrderDataSet.get(j));
+                    tempOrderDataSet.set(j, temp);
+                }
+
+            }
+
+            
+            
+        }
     }
 
 }

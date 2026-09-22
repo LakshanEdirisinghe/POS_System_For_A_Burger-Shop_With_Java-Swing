@@ -34,5 +34,12 @@ class Main{
         PlaceOrderManager.placeOrder(new Order("O001", "C001", OrderStatus.PREPARING, 2));
         PlaceOrderManager.placeOrder(new Order("O002", "C002", OrderStatus.DELIVERED, 1));
         PlaceOrderManager.placeOrder(new Order("O003", "C003", OrderStatus.CANCELLED, 3));
+        PlaceOrderManager.placeOrder(new Order("O004", "C001", OrderStatus.DELIVERED, 1));
+        PlaceOrderManager.placeOrder(new Order("O005", "C002", OrderStatus.PREPARING, 2));
+        PlaceOrderManager.placeOrder(new Order("O006", "C003", OrderStatus.DELIVERED, 1));
+        PlaceOrderManager.placeOrder(new Order("O007", "C004", OrderStatus.PREPARING, 3));
+        PlaceOrderManager.placeOrder(new Order("O008", "C001", OrderStatus.DELIVERED, 2));
+        PlaceOrderManager.placeOrder(new Order("O009", "C002", OrderStatus.PREPARING, 1));
+        PlaceOrderManager.placeOrder(new Order("O010", "C003", OrderStatus.DELIVERED, 2));
     }
 }
