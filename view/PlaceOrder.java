@@ -150,7 +150,14 @@ public class PlaceOrder extends JFrame {
 
                 JOptionPane.showMessageDialog(this, "Order placed successfully!", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
+                
+                clearFields();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to place order. Please check the input values.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
+            
+           
             // PlaceOrderManager.displayOrderDetails();
 
         });
@@ -158,6 +165,14 @@ public class PlaceOrder extends JFrame {
         bToHome.addActionListener(e -> PanelOparater.backToHome(this));
         cancel.addActionListener(e -> PanelOparater.backToHome(this));
 
+    }
+
+    private void clearFields(){
+
+        orderIdValue.setText(PlaceOrderManager.getID());
+        customerIdValue.setText("C");
+        qtyField.setText("");
+        netTotalValue.setText("0.00");
     }
 
 }
