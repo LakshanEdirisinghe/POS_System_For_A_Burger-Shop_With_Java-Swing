@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import java.awt.*;
 import Controller.PlaceOrderManager;
 import Controller.PanelOparater;
+import util.Components;
 
 public class BestCustomer extends JFrame {
 
@@ -38,7 +39,7 @@ public class BestCustomer extends JFrame {
         topPanel = new JPanel();
 
         topPanel.setBackground(new Color(0x2C3E50));
-        titleLabel = new JLabel("Best Customer", JLabel.CENTER);
+        titleLabel = Components.createStyledLabel("Best Customer");
         titleLabel.setFont(new Font("Quicksand", Font.BOLD, 40));
         titleLabel.setForeground(Color.WHITE);
 
@@ -57,20 +58,12 @@ public class BestCustomer extends JFrame {
     private void backBtn() {
         southJPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        back = createStyledButton("Back");
+        back = Components.createStyledButton("Back");
         southJPanel.add(back);
         add(southJPanel, BorderLayout.SOUTH);
 
         back.addActionListener(e -> PanelOparater.backToHome(this));
 
-    }
-
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
     }
 
 }
