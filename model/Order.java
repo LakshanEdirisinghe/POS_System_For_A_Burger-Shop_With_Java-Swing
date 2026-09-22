@@ -40,6 +40,9 @@ public class Order {
     public void setCustId(String custId) {
         this.custId = custId;
     }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;

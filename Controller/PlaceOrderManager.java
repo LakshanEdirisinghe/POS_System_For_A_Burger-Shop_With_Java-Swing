@@ -112,7 +112,6 @@ public class PlaceOrderManager {
 
     public static void bestCustomer(JPanel centerPanel) {
 
-
         if (placeOrderDataSet.isEmpty()) {
             JLabel noDataLabel = new JLabel("No orders placed yet...", JLabel.CENTER);
             noDataLabel.setFont(new java.awt.Font("Quicksand", java.awt.Font.BOLD, 30));
@@ -123,40 +122,41 @@ public class PlaceOrderManager {
         ArrayList<Order> tempOrderDataSet = new ArrayList<>(placeOrderDataSet);
         ArrayList<Order> uniqueOrders = new ArrayList<>();
 
-        
-
         // double price=0.0;
-        toSort(tempOrderDataSet);
+        toSort(tempOrderDataSet, 1);
 
-        for (Order order : tempOrderDataSet) {
+        for(int i = 0; i < tempOrderDataSet.size(); i++) {
+           
+            if (uniqueOrders.isEmpty()) {
+                uniqueOrders.add(tempOrderDataSet.get(i));
+            } else if (uniqueOrders.get(uniqueOrders.size() - 1).getCustId().equalsIgnoreCase(tempOrderDataSet.get(i).getCustId())) {
+                int lastUniqueIndex = uniqueOrders.size() - 1;
+                uniqueOrders.get(lastUniqueIndex).setQuantity(
+                        uniqueOrders.get(lastUniqueIndex).getQuantity() + tempOrderDataSet.get(i).getQuantity());
+            } else {
+                uniqueOrders.add(tempOrderDataSet.get(i));
+            }
 
-            // for (int i = 0; i < tempOrderDataSet.size(); i++) {
                 
-            // }
-            
-            // if (order.getCustId().equalsIgnoreCase("c001")) {
-            //     price+= (order.getQuantity()*500);
-                
-            // }
-
-            System.out.println(order.getQuantity());
             
         }
-        // System.out.println();
-
+        toSort(uniqueOrders);
         
-
-
+        for (Order order : uniqueOrders) {
+            System.out.println("Customer ID: " + order.getCustId() + ", Quantity: " + order.getQuantity());
+        }
+        // System.out.println(Integer.parseInt(tempOrderDataSet.get(0).getCustId().substring(1)));
 
     }
 
-    private static void toSort(ArrayList<Order> tempOrderDataSet ){
+    private static void toSort(ArrayList<Order> tempOrderDataSet, int num) {
 
         for (int i = 0; i < tempOrderDataSet.size(); i++) {
 
             for (int j = i + 1; j < tempOrderDataSet.size(); j++) {
 
-                if (tempOrderDataSet.get(i).getQuantity() > tempOrderDataSet.get(j).getQuantity()) {
+                if (Integer.parseInt(tempOrderDataSet.get(i).getCustId().substring(1)) > Integer
+                        .parseInt(tempOrderDataSet.get(j).getCustId().substring(1))) {
                     Order temp = tempOrderDataSet.get(i);
                     tempOrderDataSet.set(i, tempOrderDataSet.get(j));
                     tempOrderDataSet.set(j, temp);
@@ -164,8 +164,23 @@ public class PlaceOrderManager {
 
             }
 
-            
-            
+        }
+    }
+
+    private static void toSort(ArrayList<Order> tempOrderDataSet) {
+
+        for (int i = 0; i < tempOrderDataSet.size(); i++) {
+
+            for (int j = i + 1; j < tempOrderDataSet.size(); j++) {
+
+                if (tempOrderDataSet.get(i).getQuantity() < tempOrderDataSet.get(j).getQuantity()) {
+                    Order temp = tempOrderDataSet.get(i);
+                    tempOrderDataSet.set(i, tempOrderDataSet.get(j));
+                    tempOrderDataSet.set(j, temp);
+                }
+
+            }
+
         }
     }
 
