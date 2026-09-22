@@ -4,8 +4,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+// import javax.swing.JScrollPane;
+// import javax.swing.JTable;
 
 import java.awt.*;
 import Controller.PlaceOrderManager;
@@ -51,7 +51,7 @@ public class BestCustomer extends JFrame {
         centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(Color.WHITE);
 
-        PlaceOrderManager.bestCustomer(centerPanel);
+        // PlaceOrderManager.bestCustomer(centerPanel);
         add(centerPanel, BorderLayout.CENTER);
     }
 

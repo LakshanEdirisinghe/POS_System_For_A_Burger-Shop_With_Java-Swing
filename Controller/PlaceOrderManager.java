@@ -112,8 +112,13 @@ public class PlaceOrderManager {
 
     public static void bestCustomer(JPanel centerPanel) {
 
-        //impliment this
-        
+        if (placeOrderDataSet.isEmpty()) {
+            JLabel noDataLabel = new JLabel("No orders placed yet.", JLabel.CENTER);
+            noDataLabel.setFont(new java.awt.Font("Quicksand", java.awt.Font.BOLD, 20));
+            centerPanel.add(noDataLabel, BorderLayout.CENTER);
+            return;
+        }
+
     }
 
 }
