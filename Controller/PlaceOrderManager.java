@@ -12,6 +12,7 @@ import javax.swing.*;
 import model.Customer;
 import model.Order;
 
+
 public class PlaceOrderManager {
 
     private static final double BURGER_PRICE = 500.00;
@@ -125,11 +126,12 @@ public class PlaceOrderManager {
         // double price=0.0;
         toSort(tempOrderDataSet, 1);
 
-        for(int i = 0; i < tempOrderDataSet.size(); i++) {
-           
+        for (int i = 0; i < tempOrderDataSet.size(); i++) {
+
             if (uniqueOrders.isEmpty()) {
                 uniqueOrders.add(tempOrderDataSet.get(i));
-            } else if (uniqueOrders.get(uniqueOrders.size() - 1).getCustId().equalsIgnoreCase(tempOrderDataSet.get(i).getCustId())) {
+            } else if (uniqueOrders.get(uniqueOrders.size() - 1).getCustId()
+                    .equalsIgnoreCase(tempOrderDataSet.get(i).getCustId())) {
                 int lastUniqueIndex = uniqueOrders.size() - 1;
                 uniqueOrders.get(lastUniqueIndex).setQuantity(
                         uniqueOrders.get(lastUniqueIndex).getQuantity() + tempOrderDataSet.get(i).getQuantity());
@@ -137,15 +139,29 @@ public class PlaceOrderManager {
                 uniqueOrders.add(tempOrderDataSet.get(i));
             }
 
-                
-            
         }
         toSort(uniqueOrders);
-        
+
         for (Order order : uniqueOrders) {
             System.out.println("Customer ID: " + order.getCustId() + ", Quantity: " + order.getQuantity());
         }
-        // System.out.println(Integer.parseInt(tempOrderDataSet.get(0).getCustId().substring(1)));
+
+        // --- Prepare data for JTable ---
+        String[] columnNames = { "Customer ID", "Name", "Total" };
+        Object[][] tableData = new Object[uniqueOrders.size()][3];
+
+        for (int i = 0; i < uniqueOrders.size(); i++) {
+            tableData[i][0] = uniqueOrders.get(i).getCustId();//uniqArray[i].getCustId();
+            tableData[i][1] = CustomerManager.findEqualName(uniqueOrders.get(i).getCustId()); //customerDb.getName(uniqArray[i].getCustId());
+            tableData[i][2] = (uniqueOrders.get(i).getQuantity()) * 500 + ".00";
+        }
+
+        JTable table = new JTable(tableData, columnNames);
+        table.setFont(new java.awt.Font("Quicksand", java.awt.Font.PLAIN, 18));
+        table.setRowHeight(30);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
 
     }
 

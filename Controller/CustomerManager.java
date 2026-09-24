@@ -42,6 +42,18 @@ public class CustomerManager {
 
     }
 
+    public static String findEqualName(String id){
+
+        for (Customer customer : CustomerDataSet) {
+            
+            if (customer.getId().equals(id)) {
+                return customer.getName();
+            }
+        }
+
+        return "Unknown";
+    }
+
     public static void printCustomerDataSet() {
         for (Customer customer : CustomerDataSet) {
             System.out.println(customer.getId() + " - " + customer.getName());
