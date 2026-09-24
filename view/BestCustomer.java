@@ -49,7 +49,7 @@ public class BestCustomer extends JFrame {
 
     private void dataTableLoder() {
         centerPanel = new JPanel(new BorderLayout());
-        centerPanel.setBackground(Color.WHITE);
+        // centerPanel.setBackground(Color.WHITE);
 
         PlaceOrderManager.bestCustomer(centerPanel);
         
@@ -58,6 +58,7 @@ public class BestCustomer extends JFrame {
 
     private void backBtn() {
         southJPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        southJPanel.setBackground(Color.WHITE);
 
         back = Components.createStyledButton("Back");
         southJPanel.add(back);

@@ -151,8 +151,8 @@ public class PlaceOrderManager {
         Object[][] tableData = new Object[uniqueOrders.size()][3];
 
         for (int i = 0; i < uniqueOrders.size(); i++) {
-            tableData[i][0] = uniqueOrders.get(i).getCustId();//uniqArray[i].getCustId();
-            tableData[i][1] = CustomerManager.findEqualName(uniqueOrders.get(i).getCustId()); //customerDb.getName(uniqArray[i].getCustId());
+            tableData[i][0] = uniqueOrders.get(i).getCustId();
+            tableData[i][1] = CustomerManager.findEqualName(uniqueOrders.get(i).getCustId());
             tableData[i][2] = (uniqueOrders.get(i).getQuantity()) * 500 + ".00";
         }
 
