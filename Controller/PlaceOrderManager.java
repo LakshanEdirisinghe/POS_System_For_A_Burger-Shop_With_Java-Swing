@@ -12,7 +12,6 @@ import javax.swing.*;
 import model.Customer;
 import model.Order;
 
-
 public class PlaceOrderManager {
 
     private static final double BURGER_PRICE = 500.00;
@@ -198,6 +197,33 @@ public class PlaceOrderManager {
             }
 
         }
+    }
+
+    public static void findOrder(String id) {
+
+        // if (id.isEmpty() || !(id.trim().substring(0).equalsIgnoreCase("o"))) {
+        //     javax.swing.JOptionPane.showMessageDialog(
+        //             null,
+        //             "Please enter the order ID.",
+        //             "Validation Error",
+        //             javax.swing.JOptionPane.WARNING_MESSAGE);
+        //     return;
+        // }
+
+        Order myOrder = null;
+
+        for (Order order : placeOrderDataSet) {
+            if (order.getOrderId().equals(id)) {
+                myOrder = order;
+                break;
+            }
+        }
+
+        System.out.println("Order ID: " + myOrder.getOrderId()
+                + ", Customer ID: " + myOrder.getCustId()
+                + ", Quantity: " + myOrder.getQuantity()
+                + ", Order Status: " + myOrder.getOrderStatus());
+
     }
 
 }

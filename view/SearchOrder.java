@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Controller.PlaceOrderManager;
+import util.Components;
+
 import java.awt.*;
 
 public class SearchOrder extends JFrame {
@@ -36,7 +40,7 @@ public class SearchOrder extends JFrame {
         topPanel = new JPanel();
         topPanel.setBackground(new Color(0x2C3E50));
 
-        titleLabel = createStyledLabel("Search Order");
+        titleLabel = Components.createStyledLabel ("Search Order");
         titleLabel.setFont(new Font("Quicksand", Font.BOLD, 35));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel);
@@ -51,7 +55,21 @@ public class SearchOrder extends JFrame {
         searchField = new JTextField(20);
         searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
 
-        searchBtn = createStyledButton("Search");
+        searchBtn = Components.createStyledButton("Search");
+
+        searchBtn.addActionListener(e -> {
+
+            PlaceOrderManager.findOrder(searchField.getText());
+            // String searchId = searchField.getText().trim();
+            // if (!searchId.isEmpty()) {
+            //     // Perform the search operation here
+            //     // For demonstration, we will just print the search ID
+            //     System.out.println("Searching for Order ID: " + searchId);
+            //     // You can implement the actual search logic and update the form fields accordingly
+            // } else {
+            //     System.out.println("Please enter an Order ID to search.");
+            // }
+        });
 
         subCenterTopPanel.add(searchField);
         subCenterTopPanel.add(searchBtn);
@@ -66,20 +84,20 @@ public class SearchOrder extends JFrame {
         subLeftCCPanel.removeAll();
 
         // Create labels
-        customerIdLabel = createStyledLabel("Customer ID ");
-        customerIdValue = createStyledLabel(": " + "C015");
+        customerIdLabel = Components.createStyledLabel("Customer ID ");
+        customerIdValue = Components.createStyledLabel(": " + "C015");
 
-        nameLabel = createStyledLabel("Customer Name ");
-        nameValue = createStyledLabel(": " + "Ayomal");
+        nameLabel = Components.createStyledLabel("Customer Name ");
+        nameValue = Components.createStyledLabel(": " + "Ayomal");
 
-        qtyLabel = createStyledLabel("Quantity ");
-        qtyValue = createStyledLabel(": " + 4);
+        qtyLabel = Components.createStyledLabel("Quantity ");
+        qtyValue = Components.createStyledLabel(": " + 4);
 
-        totalLabel = createStyledLabel("Total ");
-        totalValue = createStyledLabel(": " + 2400 + " LKR");
+        totalLabel = Components.createStyledLabel("Total ");
+        totalValue = Components.createStyledLabel(": " + 2400 + " LKR");
 
-        statusLabel = createStyledLabel("Status ");
-        statusValue = createStyledLabel(": " + "DELIVERED");
+        statusLabel = Components.createStyledLabel("Status ");
+        statusValue = Components.createStyledLabel(": " + "DELIVERED");
 
         // Add to panel
         subLeftCCPanel.add(customerIdLabel);
@@ -107,25 +125,11 @@ public class SearchOrder extends JFrame {
         subBottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         subBottomPanel.setBackground(Color.WHITE);
 
-        back = createStyledButton("Back to Home");
+        back = Components.createStyledButton("Back to Home");
 
         subBottomPanel.add(back);
         add(subBottomPanel, BorderLayout.SOUTH);
 
-    }
-
-    private JLabel createStyledLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return label;
-    }
-
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
     }
 
     
