@@ -201,9 +201,9 @@ public class PlaceOrderManager {
         }
     }
 
-    public static String[] findOrder(String id) {
+    public static Order findOrder(String id) {
 
-        if (id.isEmpty() || !(id.trim().substring(0, 1).equalsIgnoreCase("O"))) {
+        if (id == null || id.trim().isEmpty() || !(id.trim().substring(0, 1).equalsIgnoreCase("O"))) {
             javax.swing.JOptionPane.showMessageDialog(
                     null,
                     "Please enter the order ID.",
@@ -211,37 +211,24 @@ public class PlaceOrderManager {
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return null;
         }
-        Order myOrder = null;
 
         for (Order order : placeOrderDataSet) {
-            if (order.getOrderId().equalsIgnoreCase(id)) {
-
-                myOrder = order;
-
+            if (order.getOrderId().equalsIgnoreCase(id.trim())) {
                 System.out.println("Order ID: " + order.getOrderId()
                         + ", Customer ID: " + order.getCustId()
                         + ", Customer Name: " + CustomerManager.findEqualName(order.getCustId())
                         + ", Quantity: " + order.getQuantity()
                         + ", Order Status: " + order.getOrderStatus());
-
-                return new String[] {
-                        order.getOrderId(),
-                        order.getCustId(),
-                        CustomerManager.findEqualName(order.getCustId()),
-                        String.valueOf(order.getQuantity()),
-                        order.getOrderStatus().toString()
-                };
+                return order;
             }
         }
-        if (myOrder == null) {
-            javax.swing.JOptionPane.showMessageDialog(
-                    null,
-                    "Order ID not found.",
-                    "Validation Error",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
-        }
 
-        return new String[] { "Not Found", "Not Found", "Not Found", "Not Found", "Not Found" };
+        javax.swing.JOptionPane.showMessageDialog(
+                null,
+                "Order ID not found.",
+                "Validation Error",
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+        return null;
 
     }
 

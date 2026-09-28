@@ -68,50 +68,68 @@ public class SearchOrder extends JFrame {
 
     private void centerFormPannel() {
         subLeftCCPanel = new JPanel(new GridLayout(0, 2, 10, 10));
-        subLeftCCPanel.removeAll();
+        subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
+        subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
 
         searchBtn.addActionListener(e -> {
-
-            String[] orderData = PlaceOrderManager.findOrder(searchField.getText());
-
-            // Create labels
-            customerIdLabel = Components.createStyledLabel("Customer ID ");
-            customerIdValue = Components.createStyledLabel(": " + orderData[1]);
-
-            nameLabel = Components.createStyledLabel("Customer Name ");
-            nameValue = Components.createStyledLabel(": " + orderData[2]);
-
-            qtyLabel = Components.createStyledLabel("Quantity ");
-            qtyValue = Components.createStyledLabel(": " + orderData[3]);
-
-            totalLabel = Components.createStyledLabel("Total ");
-            totalValue = Components.createStyledLabel(": " + (orderData[3].equals("Not Found") ? "Not Found" : (Integer.parseInt(orderData[3]) * 500) + " LKR"));
-
-            statusLabel = Components.createStyledLabel("Status ");
-            statusValue = Components.createStyledLabel(": " + orderData[4]);
-
-            // Add to panel
-            subLeftCCPanel.add(customerIdLabel);
-            subLeftCCPanel.add(customerIdValue);
-            subLeftCCPanel.add(nameLabel);
-            subLeftCCPanel.add(nameValue);
-            subLeftCCPanel.add(qtyLabel);
-            subLeftCCPanel.add(qtyValue);
-            subLeftCCPanel.add(totalLabel);
-            subLeftCCPanel.add(totalValue);
-            subLeftCCPanel.add(statusLabel);
-            subLeftCCPanel.add(statusValue);
-
-            // refresh UI
-            subLeftCCPanel.revalidate();
-            subLeftCCPanel.repaint();
-            subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
-            subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
-
-            
-
+            model.Order order = PlaceOrderManager.findOrder(searchField.getText().trim());
+            displayOrderDetails(order);
         });
 
+    }
+
+    private void displayOrderDetails(model.Order order) {
+        subLeftCCPanel.removeAll();
+
+        if (order == null) {
+            customerIdLabel = Components.createStyledLabel("Customer ID ");
+            customerIdValue = Components.createStyledLabel(": Not Found");
+
+            nameLabel = Components.createStyledLabel("Customer Name ");
+            nameValue = Components.createStyledLabel(": Not Found");
+
+            qtyLabel = Components.createStyledLabel("Quantity ");
+            qtyValue = Components.createStyledLabel(": Not Found");
+
+            totalLabel = Components.createStyledLabel("Total ");
+            totalValue = Components.createStyledLabel(": Not Found");
+
+            statusLabel = Components.createStyledLabel("Status ");
+            statusValue = Components.createStyledLabel(": Not Found");
+        } else {
+            customerIdLabel = Components.createStyledLabel("Customer ID ");
+            customerIdValue = Components.createStyledLabel(": " + order.getCustId());
+
+            nameLabel = Components.createStyledLabel("Customer Name ");
+            nameValue = Components.createStyledLabel(": " + Controller.CustomerManager.findEqualName(order.getCustId()));
+
+            qtyLabel = Components.createStyledLabel("Quantity ");
+            qtyValue = Components.createStyledLabel(": " + order.getQuantity());
+
+            totalLabel = Components.createStyledLabel("Total ");
+            totalValue = Components.createStyledLabel(": " + (order.getQuantity() * 500) + " LKR");
+
+            statusLabel = Components.createStyledLabel("Status ");
+            statusValue = Components.createStyledLabel(": " + order.getOrderStatus());
+        }
+
+        subLeftCCPanel.add(customerIdLabel);
+        subLeftCCPanel.add(customerIdValue);
+        subLeftCCPanel.add(nameLabel);
+        subLeftCCPanel.add(nameValue);
+        subLeftCCPanel.add(qtyLabel);
+        subLeftCCPanel.add(qtyValue);
+        subLeftCCPanel.add(totalLabel);
+        subLeftCCPanel.add(totalValue);
+        subLeftCCPanel.add(statusLabel);
+        subLeftCCPanel.add(statusValue);
+
+        subLeftCCPanel.revalidate();
+        subLeftCCPanel.repaint();
+        subCenterPanel.revalidate();
+        subCenterPanel.repaint();
+        revalidate();
+        repaint();
     }
 
     private void bottomBackBtnPanel() {
