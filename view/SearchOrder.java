@@ -62,6 +62,7 @@ public class SearchOrder extends JFrame {
         subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
 
         subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        add(subCenterPanel, BorderLayout.CENTER);
 
     }
 
@@ -106,7 +107,8 @@ public class SearchOrder extends JFrame {
             subLeftCCPanel.repaint();
             subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
             subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
-            add(subCenterPanel, BorderLayout.CENTER);
+
+            
 
         });
 
