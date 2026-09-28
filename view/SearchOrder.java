@@ -33,7 +33,6 @@ public class SearchOrder extends JFrame {
         centerSearchBarPanal();
         centerFormPannel();
         bottomBackBtnPanel();
-        searchBtnAction();
 
     }
 
@@ -70,40 +69,46 @@ public class SearchOrder extends JFrame {
         subLeftCCPanel = new JPanel(new GridLayout(0, 2, 10, 10));
         subLeftCCPanel.removeAll();
 
-        // Create labels
-        customerIdLabel = Components.createStyledLabel("Customer ID ");
-        // customerIdValue = Components.createStyledLabel(": " + "C015");
+        searchBtn.addActionListener(e -> {
 
-        nameLabel = Components.createStyledLabel("Customer Name ");
-        // nameValue = Components.createStyledLabel(": " + "Ayomal");
+            String[] orderData = PlaceOrderManager.findOrder(searchField.getText());
 
-        qtyLabel = Components.createStyledLabel("Quantity ");
-        // qtyValue = Components.createStyledLabel(": " + 4);
+            // Create labels
+            customerIdLabel = Components.createStyledLabel("Customer ID ");
+            customerIdValue = Components.createStyledLabel(": " + orderData[1]);
 
-        totalLabel = Components.createStyledLabel("Total ");
-        // totalValue = Components.createStyledLabel(": " + 2400 + " LKR");
+            nameLabel = Components.createStyledLabel("Customer Name ");
+            nameValue = Components.createStyledLabel(": " + orderData[2]);
 
-        statusLabel = Components.createStyledLabel("Status ");
-        // statusValue = Components.createStyledLabel(": " + "DELIVERED");
+            qtyLabel = Components.createStyledLabel("Quantity ");
+            qtyValue = Components.createStyledLabel(": " + orderData[3]);
 
-        // Add to panel
-        subLeftCCPanel.add(customerIdLabel);
-        subLeftCCPanel.add(customerIdValue);
-        subLeftCCPanel.add(nameLabel);
-        subLeftCCPanel.add(nameValue);
-        subLeftCCPanel.add(qtyLabel);
-        subLeftCCPanel.add(qtyValue);
-        subLeftCCPanel.add(totalLabel);
-        subLeftCCPanel.add(totalValue);
-        subLeftCCPanel.add(statusLabel);
-        subLeftCCPanel.add(statusValue);
+            totalLabel = Components.createStyledLabel("Total ");
+            totalValue = Components.createStyledLabel(": " + (orderData[3].equals("Not Found") ? "Not Found" : (Integer.parseInt(orderData[3]) * 500) + " LKR"));
 
-        // refresh UI
-        subLeftCCPanel.revalidate();
-        subLeftCCPanel.repaint();
-        subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
-        subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
-        add(subCenterPanel, BorderLayout.CENTER);
+            statusLabel = Components.createStyledLabel("Status ");
+            statusValue = Components.createStyledLabel(": " + orderData[4]);
+
+            // Add to panel
+            subLeftCCPanel.add(customerIdLabel);
+            subLeftCCPanel.add(customerIdValue);
+            subLeftCCPanel.add(nameLabel);
+            subLeftCCPanel.add(nameValue);
+            subLeftCCPanel.add(qtyLabel);
+            subLeftCCPanel.add(qtyValue);
+            subLeftCCPanel.add(totalLabel);
+            subLeftCCPanel.add(totalValue);
+            subLeftCCPanel.add(statusLabel);
+            subLeftCCPanel.add(statusValue);
+
+            // refresh UI
+            subLeftCCPanel.revalidate();
+            subLeftCCPanel.repaint();
+            subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
+            subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
+            add(subCenterPanel, BorderLayout.CENTER);
+
+        });
 
     }
 
@@ -117,15 +122,6 @@ public class SearchOrder extends JFrame {
         subBottomPanel.add(back);
         add(subBottomPanel, BorderLayout.SOUTH);
 
-    }
-
-    private void searchBtnAction() {
-        searchBtn.addActionListener(e -> {
-
-            PlaceOrderManager.findOrder(searchField.getText(), customerIdValue, nameValue, qtyValue, totalValue,
-                    statusValue);
-
-        });
     }
 
 }

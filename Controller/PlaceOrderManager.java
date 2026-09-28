@@ -201,9 +201,7 @@ public class PlaceOrderManager {
         }
     }
 
-    public static void findOrder(String id, JLabel customerIdValue, JLabel nameValue, JLabel qtyValue,
-            JLabel totalValue,
-            JLabel statusValue) {
+    public static String[] findOrder(String id) {
 
         if (id.isEmpty() || !(id.trim().substring(0, 1).equalsIgnoreCase("O"))) {
             javax.swing.JOptionPane.showMessageDialog(
@@ -211,7 +209,7 @@ public class PlaceOrderManager {
                     "Please enter the order ID.",
                     "Validation Error",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
-            return;
+            return null;
         }
         Order myOrder = null;
 
@@ -220,19 +218,19 @@ public class PlaceOrderManager {
 
                 myOrder = order;
 
-                customerIdValue = Components.createStyledLabel(": " + order.getCustId());
-                nameValue = Components.createStyledLabel(": " + CustomerManager.findEqualName(order.getCustId()));
-                qtyValue = Components.createStyledLabel(": " + order.getQuantity());
-                totalValue = Components.createStyledLabel(": " + (order.getQuantity() * BURGER_PRICE) + " LKR");
-                statusValue = Components.createStyledLabel(": " + order.getOrderStatus());
-
                 System.out.println("Order ID: " + order.getOrderId()
                         + ", Customer ID: " + order.getCustId()
                         + ", Customer Name: " + CustomerManager.findEqualName(order.getCustId())
                         + ", Quantity: " + order.getQuantity()
                         + ", Order Status: " + order.getOrderStatus());
 
-                return;
+                return new String[] {
+                        order.getOrderId(),
+                        order.getCustId(),
+                        CustomerManager.findEqualName(order.getCustId()),
+                        String.valueOf(order.getQuantity()),
+                        order.getOrderStatus().toString()
+                };
             }
         }
         if (myOrder == null) {
@@ -242,6 +240,8 @@ public class PlaceOrderManager {
                     "Validation Error",
                     javax.swing.JOptionPane.WARNING_MESSAGE);
         }
+
+        return new String[] { "Not Found", "Not Found", "Not Found", "Not Found", "Not Found" };
 
     }
 
