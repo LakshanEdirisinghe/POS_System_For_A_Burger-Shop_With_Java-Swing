@@ -201,15 +201,14 @@ public class PlaceOrderManager {
 
     public static void findOrder(String id) {
 
-        // if (id.isEmpty() || !(id.trim().substring(0).equalsIgnoreCase("o"))) {
-        //     javax.swing.JOptionPane.showMessageDialog(
-        //             null,
-        //             "Please enter the order ID.",
-        //             "Validation Error",
-        //             javax.swing.JOptionPane.WARNING_MESSAGE);
-        //     return;
-        // }
-
+        if (id.isEmpty()||!(id.trim().substring(0,1).equalsIgnoreCase("o"))) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Please enter the order ID.",
+                    "Validation Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         Order myOrder = null;
 
         for (Order order : placeOrderDataSet) {

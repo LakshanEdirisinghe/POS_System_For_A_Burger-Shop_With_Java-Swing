@@ -59,16 +59,10 @@ public class SearchOrder extends JFrame {
 
         searchBtn.addActionListener(e -> {
 
+            // System.out.println(searchField.getText());
+
             PlaceOrderManager.findOrder(searchField.getText());
-            // String searchId = searchField.getText().trim();
-            // if (!searchId.isEmpty()) {
-            //     // Perform the search operation here
-            //     // For demonstration, we will just print the search ID
-            //     System.out.println("Searching for Order ID: " + searchId);
-            //     // You can implement the actual search logic and update the form fields accordingly
-            // } else {
-            //     System.out.println("Please enter an Order ID to search.");
-            // }
+
         });
 
         subCenterTopPanel.add(searchField);
