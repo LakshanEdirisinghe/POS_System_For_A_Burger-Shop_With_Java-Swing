@@ -201,7 +201,7 @@ public class PlaceOrderManager {
 
     public static void findOrder(String id) {
 
-        if (id.isEmpty()||!(id.trim().substring(0,1).equalsIgnoreCase("o"))) {
+        if (id.isEmpty() || !(id.trim().substring(0, 1).equalsIgnoreCase("O"))) {
             javax.swing.JOptionPane.showMessageDialog(
                     null,
                     "Please enter the order ID.",
@@ -212,16 +212,25 @@ public class PlaceOrderManager {
         Order myOrder = null;
 
         for (Order order : placeOrderDataSet) {
-            if (order.getOrderId().equals(id)) {
+            if (order.getOrderId().equalsIgnoreCase(id)) {
+
                 myOrder = order;
+
+                System.out.println("Order ID: " + order.getOrderId()
+                        + ", Customer ID: " + order.getCustId()
+                        + ", Customer Name: " + CustomerManager.findEqualName(order.getCustId())
+                        + ", Quantity: " + order.getQuantity()
+                        + ", Order Status: " + order.getOrderStatus());
                 break;
             }
         }
-
-        System.out.println("Order ID: " + myOrder.getOrderId()
-                + ", Customer ID: " + myOrder.getCustId()
-                + ", Quantity: " + myOrder.getQuantity()
-                + ", Order Status: " + myOrder.getOrderStatus());
+        if (myOrder == null) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Order ID not found.",
+                    "Validation Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+        }
 
     }
 
