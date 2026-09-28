@@ -1,16 +1,18 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+// import java.util.HashMap;
+// import java.util.List;
+// import java.util.Map;
 import java.awt.BorderLayout;
-import java.awt.Color;
+// import java.awt.Color;
 
 import javax.swing.*;
 
-import model.Customer;
+// import model.Customer;
 import model.Order;
+// import view.SearchOrder;
+import util.Components;
 
 public class PlaceOrderManager {
 
@@ -199,7 +201,9 @@ public class PlaceOrderManager {
         }
     }
 
-    public static void findOrder(String id) {
+    public static void findOrder(String id, JLabel customerIdValue, JLabel nameValue, JLabel qtyValue,
+            JLabel totalValue,
+            JLabel statusValue) {
 
         if (id.isEmpty() || !(id.trim().substring(0, 1).equalsIgnoreCase("O"))) {
             javax.swing.JOptionPane.showMessageDialog(
@@ -216,12 +220,19 @@ public class PlaceOrderManager {
 
                 myOrder = order;
 
+                customerIdValue = Components.createStyledLabel(": " + order.getCustId());
+                nameValue = Components.createStyledLabel(": " + CustomerManager.findEqualName(order.getCustId()));
+                qtyValue = Components.createStyledLabel(": " + order.getQuantity());
+                totalValue = Components.createStyledLabel(": " + (order.getQuantity() * BURGER_PRICE) + " LKR");
+                statusValue = Components.createStyledLabel(": " + order.getOrderStatus());
+
                 System.out.println("Order ID: " + order.getOrderId()
                         + ", Customer ID: " + order.getCustId()
                         + ", Customer Name: " + CustomerManager.findEqualName(order.getCustId())
                         + ", Quantity: " + order.getQuantity()
                         + ", Order Status: " + order.getOrderStatus());
-                break;
+
+                return;
             }
         }
         if (myOrder == null) {

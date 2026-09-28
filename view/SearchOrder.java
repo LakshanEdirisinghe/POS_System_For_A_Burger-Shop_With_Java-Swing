@@ -33,6 +33,7 @@ public class SearchOrder extends JFrame {
         centerSearchBarPanal();
         centerFormPannel();
         bottomBackBtnPanel();
+        searchBtnAction();
 
     }
 
@@ -40,7 +41,7 @@ public class SearchOrder extends JFrame {
         topPanel = new JPanel();
         topPanel.setBackground(new Color(0x2C3E50));
 
-        titleLabel = Components.createStyledLabel ("Search Order");
+        titleLabel = Components.createStyledLabel("Search Order");
         titleLabel.setFont(new Font("Quicksand", Font.BOLD, 35));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel);
@@ -57,14 +58,6 @@ public class SearchOrder extends JFrame {
 
         searchBtn = Components.createStyledButton("Search");
 
-        searchBtn.addActionListener(e -> {
-
-            // System.out.println(searchField.getText());
-
-            PlaceOrderManager.findOrder(searchField.getText());
-
-        });
-
         subCenterTopPanel.add(searchField);
         subCenterTopPanel.add(searchBtn);
         subCenterPanel.add(subCenterTopPanel, BorderLayout.NORTH);
@@ -79,19 +72,19 @@ public class SearchOrder extends JFrame {
 
         // Create labels
         customerIdLabel = Components.createStyledLabel("Customer ID ");
-        customerIdValue = Components.createStyledLabel(": " + "C015");
+        // customerIdValue = Components.createStyledLabel(": " + "C015");
 
         nameLabel = Components.createStyledLabel("Customer Name ");
-        nameValue = Components.createStyledLabel(": " + "Ayomal");
+        // nameValue = Components.createStyledLabel(": " + "Ayomal");
 
         qtyLabel = Components.createStyledLabel("Quantity ");
-        qtyValue = Components.createStyledLabel(": " + 4);
+        // qtyValue = Components.createStyledLabel(": " + 4);
 
         totalLabel = Components.createStyledLabel("Total ");
-        totalValue = Components.createStyledLabel(": " + 2400 + " LKR");
+        // totalValue = Components.createStyledLabel(": " + 2400 + " LKR");
 
         statusLabel = Components.createStyledLabel("Status ");
-        statusValue = Components.createStyledLabel(": " + "DELIVERED");
+        // statusValue = Components.createStyledLabel(": " + "DELIVERED");
 
         // Add to panel
         subLeftCCPanel.add(customerIdLabel);
@@ -126,5 +119,13 @@ public class SearchOrder extends JFrame {
 
     }
 
-    
+    private void searchBtnAction() {
+        searchBtn.addActionListener(e -> {
+
+            PlaceOrderManager.findOrder(searchField.getText(), customerIdValue, nameValue, qtyValue, totalValue,
+                    statusValue);
+
+        });
+    }
+
 }
