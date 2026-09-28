@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.PanelOparater;
 import Controller.PlaceOrderManager;
 import util.Components;
 
@@ -138,6 +139,7 @@ public class SearchOrder extends JFrame {
         subBottomPanel.setBackground(Color.WHITE);
 
         back = Components.createStyledButton("Back to Home");
+        back.addActionListener(e -> PanelOparater.backToHome(this));
 
         subBottomPanel.add(back);
         add(subBottomPanel, BorderLayout.SOUTH);
