@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import java.awt.*;
 
+import Controller.CustomerManager;
 import util.Components;
 
 public class SearchCustomer extends JFrame {
@@ -77,6 +78,10 @@ public class SearchCustomer extends JFrame {
         searchField = new JTextField(15);
         searchField.setFont(new Font("Quicksand", Font.BOLD, 16));
 
+        searchBtn = Components.createStyledButton("Search");
+        // searchBtn.addActionListener(e -> nameValue.setText(
+        //     CustomerManager.findEqualName(searchField.getText().trim())));
+
 
         custnameTag = Components.createStyledLabel("Customer Name: ");
         custnameTag.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -89,6 +94,9 @@ public class SearchCustomer extends JFrame {
 
         formConstraints.gridx = 1;
         subTopCenterPanel.add(searchField, formConstraints);
+
+        formConstraints.gridx = 2;
+        subTopCenterPanel.add(searchBtn, formConstraints);
 
         formConstraints.gridx = 0;
         formConstraints.gridy = 1;
