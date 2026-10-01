@@ -53,18 +53,6 @@ public class SearchCustomer extends JFrame {
         subTopTitleJPanel.add(title);
         subToPPanel.add(subTopTitleJPanel, BorderLayout.NORTH);
 
-        // searchField = new JTextField(20);
-        // searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
-
-        // searchBtn = Components.createStyledButton("Search");
-
-        // subTopBottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        // subTopBottomPanel.add(searchField);
-        // subTopBottomPanel.add(searchBtn);
-
-        // subToPPanel.add(subTopBottomPanel, BorderLayout.CENTER);
-
-        // subToPPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
 
         subTopCenterPanel = new JPanel(new GridBagLayout());
 
@@ -137,19 +125,5 @@ public class SearchCustomer extends JFrame {
         add(subBottomPanel);
 
     }
-
-    // private JButton createStyledButton(String text) {
-    // JButton button = new JButton(text);
-    // button.setBackground(new Color(209, 72, 72));
-    // button.setForeground(Color.WHITE);
-    // button.setFont(new Font("Quicksand", Font.BOLD, 20));
-    // return button;
-    // }
-
-    // private JLabel createStyledLabel(String text) {
-    // JLabel label = new JLabel(text);
-    // label.setFont(new Font("Quicksand", Font.BOLD, 20));
-    // return label;
-    // }
 
 }
