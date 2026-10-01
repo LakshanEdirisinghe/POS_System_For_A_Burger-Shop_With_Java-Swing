@@ -9,18 +9,20 @@ import javax.swing.JPanel;
 // import javax.swing.JScrollPane;
 // import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import java.awt.*;
 
 import util.Components;
 
 public class SearchCustomer extends JFrame {
 
-    private JPanel subToPPanel, subBottomPanel, subBottomBPanel, subBottomCenterPanel, subTopBottomPanel,
+    private JPanel subToPPanel, subBottomPanel, subBottomBPanel, subBottomCenterPanel, subTopCenterPanel,
             subTopTitleJPanel, subBottomTitleJPanel;
 
     private JTextField searchField;
     private JButton back, searchBtn;
-    private JLabel CustnameTag, nameValue, title, titlebottumname;
+    private JLabel custnameTag, nameValue, title, titlebottumname, customerIdTag, customerIdValue;
 
     public SearchCustomer() {
 
@@ -63,6 +65,40 @@ public class SearchCustomer extends JFrame {
 
         // subToPPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 40, 20));
 
+        subTopCenterPanel = new JPanel(new GridBagLayout());
+
+        GridBagConstraints formConstraints = new GridBagConstraints();
+        formConstraints.insets = new Insets(8, 12, 8, 12);
+        formConstraints.anchor = GridBagConstraints.CENTER;
+
+        customerIdTag = Components.createStyledLabel("Customer ID: ");
+        customerIdTag.setHorizontalAlignment(SwingConstants.RIGHT);
+
+        searchField = new JTextField(15);
+        searchField.setFont(new Font("Quicksand", Font.BOLD, 16));
+
+
+        custnameTag = Components.createStyledLabel("Customer Name: ");
+        custnameTag.setHorizontalAlignment(SwingConstants.RIGHT);
+        nameValue = Components.createStyledLabel("Ayomal Perera");
+        nameValue.setHorizontalAlignment(SwingConstants.LEFT);
+
+        formConstraints.gridx = 0;
+        formConstraints.gridy = 0;
+        subTopCenterPanel.add(customerIdTag, formConstraints);
+
+        formConstraints.gridx = 1;
+        subTopCenterPanel.add(searchField, formConstraints);
+
+        formConstraints.gridx = 0;
+        formConstraints.gridy = 1;
+        subTopCenterPanel.add(custnameTag, formConstraints);
+
+        formConstraints.gridx = 1;
+        subTopCenterPanel.add(nameValue, formConstraints);
+
+        subToPPanel.add(subTopCenterPanel, BorderLayout.CENTER);
+
         add(subToPPanel);
     }
 
@@ -86,7 +122,7 @@ public class SearchCustomer extends JFrame {
 
         subBottomBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        back =Components.createStyledButton("Back");
+        back = Components.createStyledButton("Back");
         subBottomBPanel.add(back);
         subBottomPanel.add(subBottomBPanel, BorderLayout.SOUTH);
 
@@ -95,17 +131,17 @@ public class SearchCustomer extends JFrame {
     }
 
     // private JButton createStyledButton(String text) {
-    //     JButton button = new JButton(text);
-    //     button.setBackground(new Color(209, 72, 72));
-    //     button.setForeground(Color.WHITE);
-    //     button.setFont(new Font("Quicksand", Font.BOLD, 20));
-    //     return button;
+    // JButton button = new JButton(text);
+    // button.setBackground(new Color(209, 72, 72));
+    // button.setForeground(Color.WHITE);
+    // button.setFont(new Font("Quicksand", Font.BOLD, 20));
+    // return button;
     // }
 
     // private JLabel createStyledLabel(String text) {
-    //     JLabel label = new JLabel(text);
-    //     label.setFont(new Font("Quicksand", Font.BOLD, 20));
-    //     return label;
+    // JLabel label = new JLabel(text);
+    // label.setFont(new Font("Quicksand", Font.BOLD, 20));
+    // return label;
     // }
 
 }
