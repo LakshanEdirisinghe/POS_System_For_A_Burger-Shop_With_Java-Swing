@@ -28,7 +28,6 @@ public class CustomerManager {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
-        boolean check=CustomerDataSet.add(customer);
 
         // if (check) {
 

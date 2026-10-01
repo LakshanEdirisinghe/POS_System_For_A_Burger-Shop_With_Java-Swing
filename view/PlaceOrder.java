@@ -12,11 +12,11 @@ import java.awt.event.KeyEvent;
 
 import Controller.PanelOparater;
 import util.*;
-// import Controller.PlaceOrderManager;
+// import Controller.OrderManager;
 // import Controller.OrderS;
 // import model.OrderItem;
 
-import Controller.PlaceOrderManager;
+import Controller.OrderManager;
 import model.Order;
 
 public class PlaceOrder extends JFrame {
@@ -69,7 +69,7 @@ public class PlaceOrder extends JFrame {
         subRightPanel = new JPanel();
 
         orderId = Components.createStyledLabel("Order ID:");
-        orderIdValue = Components.createStyledLabel(PlaceOrderManager.getID() + "");
+        orderIdValue = Components.createStyledLabel(OrderManager.getID() + "");
 
         customerId = Components.createStyledLabel("Customer ID:");
         customerIdValue = Components.createStyledTextField("C");
@@ -137,12 +137,12 @@ public class PlaceOrder extends JFrame {
         qtyField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                PlaceOrderManager.netTotTigger(qtyField, netTotalValue);
+                OrderManager.netTotTigger(qtyField, netTotalValue);
             }
         });
 
         placeOrderButton.addActionListener(e -> {
-            if (PlaceOrderManager.placeOrder(new Order(
+            if (OrderManager.placeOrder(new Order(
                     orderIdValue.getText(),
                     customerIdValue.getText(),
                     OrderStatus.PREPARING,
@@ -157,7 +157,7 @@ public class PlaceOrder extends JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
 
-            PlaceOrderManager.displayOrderDetails();
+            OrderManager.displayOrderDetails();
 
         });
 
@@ -168,7 +168,7 @@ public class PlaceOrder extends JFrame {
 
     private void clearFields() {
 
-        orderIdValue.setText(PlaceOrderManager.getID());
+        orderIdValue.setText(OrderManager.getID());
         customerIdValue.setText("C");
         qtyField.setText("");
         netTotalValue.setText("0.00");

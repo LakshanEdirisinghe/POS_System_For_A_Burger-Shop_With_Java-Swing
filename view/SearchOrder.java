@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controller.PanelOparater;
-import Controller.PlaceOrderManager;
+import Controller.OrderManager;
 import util.Components;
 
 import java.awt.*;
@@ -73,7 +73,7 @@ public class SearchOrder extends JFrame {
         subCenterPanel.add(subLeftCCPanel, BorderLayout.CENTER);
 
         searchBtn.addActionListener(e -> {
-            model.Order order = PlaceOrderManager.findOrder(searchField.getText().trim());
+            model.Order order = OrderManager.findOrder(searchField.getText().trim());
             displayOrderDetails(order);
         });
 

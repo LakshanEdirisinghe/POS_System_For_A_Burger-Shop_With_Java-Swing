@@ -14,7 +14,7 @@ import model.Order;
 // import view.SearchOrder;
 
 
-public class PlaceOrderManager {
+public class OrderManager {
 
     private static final double BURGER_PRICE = 500.00;
 
@@ -102,7 +102,7 @@ public class PlaceOrderManager {
             int qty = Integer.parseInt(text);
 
             if (qty > 0) {
-                PlaceOrderManager.updateNetTotal(qtyField, netTotalValue);
+                OrderManager.updateNetTotal(qtyField, netTotalValue);
             } else {
                 netTotalValue.setText(" 0.00");
             }
