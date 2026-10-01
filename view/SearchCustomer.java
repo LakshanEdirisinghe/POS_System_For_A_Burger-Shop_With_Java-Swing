@@ -34,8 +34,9 @@ public class SearchCustomer extends JFrame {
         setLayout(new GridLayout(2, 0));
         setLocationRelativeTo(null);
 
-        subTopPannal();
         subBottomPannal();
+        subTopPannal();
+        
 
     }
 
@@ -72,13 +73,13 @@ public class SearchCustomer extends JFrame {
 
             String customerName = OrderManager.getOrderDetails(searchField.getText().trim(), subBottomCenterPanel);
             if (customerName != null) {
-                nameValue.setText(customerName);
+                nameValue.setText(customerName.toUpperCase());
             }
         });
 
         custnameTag = Components.createStyledLabel("Customer Name: ");
         custnameTag.setHorizontalAlignment(SwingConstants.RIGHT);
-        nameValue = Components.createStyledLabel("Ayomal Perera");
+        nameValue = Components.createStyledLabel("");
         nameValue.setHorizontalAlignment(SwingConstants.LEFT);
 
         formConstraints.gridx = 0;

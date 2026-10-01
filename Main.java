@@ -31,7 +31,7 @@ class Main{
     private static void addOrder() {
 
 
-        OrderManager.placeOrder(new Order("O001", "C001", OrderStatus.PREPARING, 2));
+        OrderManager.placeOrder(new Order("O001", "C003", OrderStatus.PREPARING, 2));
         OrderManager.placeOrder(new Order("O002", "C002", OrderStatus.DELIVERED, 1));
         OrderManager.placeOrder(new Order("O003", "C003", OrderStatus.CANCELLED, 3));
         OrderManager.placeOrder(new Order("O004", "C001", OrderStatus.DELIVERED, 1));

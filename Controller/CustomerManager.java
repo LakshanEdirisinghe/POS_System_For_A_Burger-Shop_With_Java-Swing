@@ -29,6 +29,8 @@ public class CustomerManager {
             return;
         }
 
+        CustomerDataSet.add(customer);
+
         // if (check) {
 
         //     JOptionPane.showMessageDialog(
@@ -45,7 +47,7 @@ public class CustomerManager {
 
         for (Customer customer : CustomerDataSet) {
             
-            if (customer.getId().equals(id)) {
+            if (customer.getId().equalsIgnoreCase(id)) {
                 return customer.getName();
             }
         }

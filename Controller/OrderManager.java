@@ -241,8 +241,10 @@ public class OrderManager {
                     javax.swing.JOptionPane.WARNING_MESSAGE);
             return null;
         }
-
+        // System.out.println(customerId);
         String customerName = CustomerManager.findEqualName(customerId.trim());
+
+        System.out.println(customerName);
 
         if(customerName.equals("Unknown")) {
             javax.swing.JOptionPane.showMessageDialog(
