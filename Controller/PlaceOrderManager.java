@@ -12,7 +12,7 @@ import javax.swing.*;
 // import model.Customer;
 import model.Order;
 // import view.SearchOrder;
-import util.Components;
+
 
 public class PlaceOrderManager {
 
