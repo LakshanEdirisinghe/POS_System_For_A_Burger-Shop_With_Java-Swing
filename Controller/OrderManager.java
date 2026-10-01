@@ -13,7 +13,6 @@ import javax.swing.*;
 import model.Order;
 // import view.SearchOrder;
 
-
 public class OrderManager {
 
     private static final double BURGER_PRICE = 500.00;
@@ -229,6 +228,67 @@ public class OrderManager {
                 "Validation Error",
                 javax.swing.JOptionPane.WARNING_MESSAGE);
         return null;
+
+    }
+
+    public static String getOrderDetails(String customerId, JPanel centerPanel) {
+
+        if (customerId == null || customerId.trim().isEmpty() || !(customerId.trim().substring(0, 1).equalsIgnoreCase("c"))) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Please enter the customer ID.",
+                    "Validation Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+
+        String customerName = CustomerManager.findEqualName(customerId.trim());
+
+        if(customerName.equals("Unknown")) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Customer ID not found.",
+                    "Validation Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return null ;
+        }
+
+        ArrayList<Order> tempCustomerOrders = new ArrayList<>();
+
+        for (Order order : placeOrderDataSet) {
+            if (order.getCustId().equalsIgnoreCase(customerId.trim())) {
+                tempCustomerOrders.add(order);
+            }
+        }
+
+        if(tempCustomerOrders.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "No orders found for the given customer ID.",
+                    "Validation Error",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+            return null;
+        }
+
+        String[] columnNames = { "Order ID","Quantity","Total"};
+        Object[][] tableData = new Object[tempCustomerOrders.size()][3];
+
+        for (int i = 0; i < tempCustomerOrders.size(); i++) {
+            Order order = tempCustomerOrders.get(i);
+            tableData[i][0] = order.getOrderId();
+            tableData[i][1] = order.getQuantity();
+            tableData[i][2] = (order.getQuantity() * BURGER_PRICE) + ".00";
+        }
+
+        JTable table = new JTable(tableData, columnNames);
+        table.setFont(new java.awt.Font("Quicksand", java.awt.Font.PLAIN, 18));
+        table.setRowHeight(30);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
+
+
+        return customerName;
 
     }
 

@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import java.awt.*;
 
 import Controller.CustomerManager;
+import Controller.OrderManager;
 import util.Components;
 
 public class SearchCustomer extends JFrame {
@@ -53,7 +54,6 @@ public class SearchCustomer extends JFrame {
         subTopTitleJPanel.add(title);
         subToPPanel.add(subTopTitleJPanel, BorderLayout.NORTH);
 
-
         subTopCenterPanel = new JPanel(new GridBagLayout());
 
         GridBagConstraints formConstraints = new GridBagConstraints();
@@ -67,9 +67,14 @@ public class SearchCustomer extends JFrame {
         searchField.setFont(new Font("Quicksand", Font.BOLD, 16));
 
         searchBtn = Components.createStyledButton("Search");
-        // searchBtn.addActionListener(e -> nameValue.setText(
-        //     CustomerManager.findEqualName(searchField.getText().trim())));
 
+        searchBtn.addActionListener(e -> {
+
+            String customerName = OrderManager.getOrderDetails(searchField.getText().trim(), subBottomCenterPanel);
+            if (customerName != null) {
+                nameValue.setText(customerName);
+            }
+        });
 
         custnameTag = Components.createStyledLabel("Customer Name: ");
         custnameTag.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -112,9 +117,9 @@ public class SearchCustomer extends JFrame {
         subBottomTitleJPanel.add(titlebottumname);
         subBottomPanel.add(subBottomTitleJPanel, BorderLayout.NORTH);
 
-        // subBottomCenterPanel = new JPanel(new BorderLayout());
+        subBottomCenterPanel = new JPanel(new BorderLayout());
 
-        // for order details table is here
+        subBottomPanel.add(subBottomCenterPanel, BorderLayout.CENTER);
 
         subBottomBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
