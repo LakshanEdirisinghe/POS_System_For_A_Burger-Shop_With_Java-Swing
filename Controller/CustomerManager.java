@@ -31,15 +31,6 @@ public class CustomerManager {
 
         CustomerDataSet.add(customer);
 
-        // if (check) {
-
-        //     JOptionPane.showMessageDialog(
-        //         null,
-        //         "Customer added successfully.",
-        //         "Success",
-        //         JOptionPane.INFORMATION_MESSAGE);
-            
-        // }
 
     }
 

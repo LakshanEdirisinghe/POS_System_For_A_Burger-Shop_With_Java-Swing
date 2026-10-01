@@ -15,6 +15,7 @@ import java.awt.*;
 
 import Controller.CustomerManager;
 import Controller.OrderManager;
+import Controller.PanelOparater;
 import util.Components;
 
 public class SearchCustomer extends JFrame {
@@ -125,6 +126,7 @@ public class SearchCustomer extends JFrame {
         subBottomBPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         back = Components.createStyledButton("Back");
+        back.addActionListener(e -> PanelOparater.backToHome(this));
         subBottomBPanel.add(back);
         subBottomPanel.add(subBottomBPanel, BorderLayout.SOUTH);
 
