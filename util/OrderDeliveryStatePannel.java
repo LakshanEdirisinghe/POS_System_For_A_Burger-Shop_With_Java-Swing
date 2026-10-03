@@ -108,7 +108,7 @@ public class OrderDeliveryStatePannel extends JFrame {
         southJPanel.setBackground(Color.WHITE);
 
         back = Components.createStyledButton("Back");
-        back.addActionListener(e -> PanelOparater.backToHome(this));
+        back.addActionListener(e -> PanelOparater.openViewOrders());
         southJPanel.add(back);
         add(southJPanel, BorderLayout.SOUTH);
 
