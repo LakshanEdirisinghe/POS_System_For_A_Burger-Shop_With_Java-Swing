@@ -10,22 +10,22 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-import Controller.PanelOparater;
-
 public class OrderDeliveryStatePannel extends JFrame {
 
     private JPanel topPanel, centerPanel, southJPanel;
     private JLabel titleLabel;
     private JButton back;
+    private JFrame parentWindow;
 
 
     private String windowTitle="";
 
 
 
-    public OrderDeliveryStatePannel(String title) {
+    public OrderDeliveryStatePannel(String title, JFrame parentWindow) {
 
         windowTitle = title;
+        this.parentWindow = parentWindow;
         // === Frame setup ===
         setTitle(title);    
         setLayout(new BorderLayout());
@@ -71,7 +71,10 @@ public class OrderDeliveryStatePannel extends JFrame {
         southJPanel.setBackground(Color.WHITE);
 
         back = Components.createStyledButton("Back");
-        back.addActionListener(e -> PanelOparater.openViewOrders());
+        back.addActionListener(e -> {
+            parentWindow.setVisible(true);
+            dispose();
+        });
         southJPanel.add(back);
         add(southJPanel, BorderLayout.SOUTH);
     }

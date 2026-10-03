@@ -65,7 +65,7 @@ public class ViewOrders extends JFrame {
         btnPreparingOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
-                    preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders");
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders", ViewOrders.this);
                     OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.PREPARING);
                 } else {
                     preparingOrderPanel.setVisible(true);
@@ -78,7 +78,7 @@ public class ViewOrders extends JFrame {
         btnDeliveredOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
-                    preparingOrderPanel = new OrderDeliveryStatePannel("Delivered Orders");
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Delivered Orders", ViewOrders.this);
                     OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.DELIVERED);
                 } else {
                     preparingOrderPanel.setVisible(true);
@@ -91,7 +91,7 @@ public class ViewOrders extends JFrame {
         btnCanceledOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
-                    preparingOrderPanel = new OrderDeliveryStatePannel("Cancelled Orders");
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Cancelled Orders", ViewOrders.this);
                     OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.CANCELLED);
                 } else {
                     preparingOrderPanel.setVisible(true);
