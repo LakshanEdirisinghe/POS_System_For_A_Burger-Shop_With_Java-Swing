@@ -108,7 +108,7 @@ public class SearchCustomer extends JFrame {
     private void subBottomPannal() {
         subBottomPanel = new JPanel(new BorderLayout());
 
-        subBottomTitleJPanel = new JPanel();//
+        subBottomTitleJPanel = new JPanel();
 
         subBottomTitleJPanel.setBackground(new Color(0x2C3E50));
 
