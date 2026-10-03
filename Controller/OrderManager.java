@@ -12,6 +12,7 @@ import javax.swing.*;
 // import model.Customer;
 import model.Order;
 // import view.SearchOrder;
+import util.OrderStatus;
 
 public class OrderManager {
 
@@ -292,6 +293,45 @@ public class OrderManager {
 
         return customerName;
 
+    }
+
+    public static void getOrderDetailsOrderByStatus(JPanel centerPanel,OrderStatus status) {
+
+        ArrayList<Order> tempCustomerOrders = new ArrayList<>();
+
+        for (Order order : placeOrderDataSet) {
+            if (order.getOrderStatus() == status) {
+                tempCustomerOrders.add(order);
+            }
+        }
+
+        if(tempCustomerOrders.isEmpty()) {
+            JLabel noDataLabel = new JLabel("No " + status.toString().toLowerCase() + " orders found.", JLabel.CENTER);
+            noDataLabel.setFont(new java.awt.Font("Quicksand", java.awt.Font.BOLD, 30));
+            centerPanel.add(noDataLabel, BorderLayout.CENTER);
+            return;
+        }
+
+        String[] columnNames = { "Order ID", "Customer ID", "Name", "Quantity", "Total" };
+        Object[][] tableData = new Object[tempCustomerOrders.size()][5];
+
+        for (int i = 0; i < tempCustomerOrders.size(); i++) {
+            Order order = tempCustomerOrders.get(i);
+            tableData[i][0] = order.getOrderId();
+            tableData[i][1] = order.getCustId();
+            tableData[i][2] = CustomerManager.findEqualName(order.getCustId());
+            tableData[i][3] = order.getQuantity();
+            tableData[i][4] = (order.getQuantity() * BURGER_PRICE) + ".00";
+        }
+
+        JTable table = new JTable(tableData, columnNames);
+        table.setFont(new java.awt.Font("Quicksand", java.awt.Font.PLAIN, 18));
+        table.setRowHeight(30);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
+
+       
     }
 
 }

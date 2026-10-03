@@ -57,6 +57,7 @@ public class OrderDeliveryStatePannel extends JFrame {
         // --- Center panel ---
         centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(Color.WHITE);
+        add(centerPanel, BorderLayout.CENTER);
 
 
         // --- Prepare data for JTable ---

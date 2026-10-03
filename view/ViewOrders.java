@@ -5,8 +5,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 import util.Components;
+import util.OrderStatus;
 import util.OrderDeliveryStatePannel;
 import Controller.PanelOparater;
+import Controller.OrderManager;
 
 public class ViewOrders extends JFrame {
 
@@ -65,6 +67,7 @@ public class ViewOrders extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
                     preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders");
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.PREPARING);
                 } else {
                     preparingOrderPanel.setVisible(true);
                     preparingOrderPanel.toFront();
