@@ -13,6 +13,7 @@ public class ViewOrders extends JFrame {
     private JPanel subLeftPanel, subRightPanel, subRightCenter, subRightTopPanel, subRightBottomPanel;
 
     private JButton btnDeliveredOrder, btnCanceledOrder, back, btnPreparingOrder;
+    private OrderDeliveryStatePannel preparingOrderPanel;
 
 
     public ViewOrders() {
@@ -62,8 +63,13 @@ public class ViewOrders extends JFrame {
 
         btnPreparingOrder.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               OrderDeliveryStatePannel preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders");
-                
+                if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders");
+                } else {
+                    preparingOrderPanel.setVisible(true);
+                    preparingOrderPanel.toFront();
+                    preparingOrderPanel.requestFocus();
+                }
             }
         });
         // btnDeliveredOrder.addActionListener(new ActionListener() {
