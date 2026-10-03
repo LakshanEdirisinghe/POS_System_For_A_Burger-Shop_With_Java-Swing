@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import util.Components;
+import util.OrderDeliveryStatePannel;
 import Controller.PanelOparater;
 
 public class ViewOrders extends JFrame {
@@ -59,12 +60,12 @@ public class ViewOrders extends JFrame {
         btnPreparingOrder = Components.createStyledButton("Preparing Order");
         btnCanceledOrder = Components.createStyledButton("Canceled Order");
 
-        // btnPreparingOrder.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-        //         new PreparingOrder("Preparing Orders",ViewOrders.database.findPreparingOrders());
-        //         dispose();
-        //     }
-        // });
+        btnPreparingOrder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               OrderDeliveryStatePannel preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders");
+                
+            }
+        });
         // btnDeliveredOrder.addActionListener(new ActionListener() {
         //     public void actionPerformed(ActionEvent e) {
         //         new DeliveredOrder("Delivered Orders",ViewOrders.database.findDeliveredOrders());
