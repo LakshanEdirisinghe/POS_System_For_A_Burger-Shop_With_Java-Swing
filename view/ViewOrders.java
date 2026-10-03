@@ -75,6 +75,32 @@ public class ViewOrders extends JFrame {
                 }
             }
         });
+
+        btnDeliveredOrder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Delivered Orders");
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.DELIVERED);
+                } else {
+                    preparingOrderPanel.setVisible(true);
+                    preparingOrderPanel.toFront();
+                    preparingOrderPanel.requestFocus();
+                }
+            }
+        });
+
+        btnCanceledOrder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
+                    preparingOrderPanel = new OrderDeliveryStatePannel("Cancelled Orders");
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.CANCELLED);
+                } else {
+                    preparingOrderPanel.setVisible(true);
+                    preparingOrderPanel.toFront();
+                    preparingOrderPanel.requestFocus();
+                }
+            }
+        });
         // btnDeliveredOrder.addActionListener(new ActionListener() {
         //     public void actionPerformed(ActionEvent e) {
         //         new DeliveredOrder("Delivered Orders",ViewOrders.database.findDeliveredOrders());
