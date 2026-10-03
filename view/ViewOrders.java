@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import util.Components;
+import Controller.PanelOparater;
+
 public class ViewOrders extends JFrame {
 
     private JPanel subLeftPanel, subRightPanel, subRightCenter, subRightTopPanel, subRightBottomPanel;
@@ -46,15 +49,15 @@ public class ViewOrders extends JFrame {
     }
 
     private void setupRightPanel() {
-        subRightPanel.setBackground(new Color(216, 216, 216));
+        // subRightPanel.setBackground(new Color(216, 216, 216));
 
         subRightCenter.setBackground(new Color(216, 216, 216));
         subRightCenter.setBorder(BorderFactory.createEmptyBorder(130, 130, 130, 130));
 
         // Buttons
-        btnDeliveredOrder = createStyledButton("Delivered Order");
-        btnPreparingOrder = createStyledButton("Preparing Order");
-        btnCanceledOrder = createStyledButton("Canceled Order");
+        btnDeliveredOrder = Components.createStyledButton("Delivered Order");
+        btnPreparingOrder = Components.createStyledButton("Preparing Order");
+        btnCanceledOrder = Components.createStyledButton("Canceled Order");
 
         // btnPreparingOrder.addActionListener(new ActionListener() {
         //     public void actionPerformed(ActionEvent e) {
@@ -81,7 +84,8 @@ public class ViewOrders extends JFrame {
         subRightCenter.add(btnCanceledOrder);
 
         subRightBottomPanel.setBackground(Color.WHITE);
-        back = createStyledButton("Back to Home");
+        back =Components.createStyledButton("Back to Home");
+        back.addActionListener(e -> PanelOparater.backToHome(this));
         // back.addActionListener(new ActionListener() {
         //     public void actionPerformed(ActionEvent e) {
         //         new MainMenu(database);
@@ -103,13 +107,13 @@ public class ViewOrders extends JFrame {
         subRightPanel.add(subRightBottomPanel, BorderLayout.SOUTH);
     }
 
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
-    }
+    // private JButton createStyledButton(String text) {
+    //     JButton button = new JButton(text);
+    //     button.setBackground(new Color(209, 72, 72));
+    //     button.setForeground(Color.WHITE);
+    //     button.setFont(new Font("Quicksand", Font.BOLD, 20));
+    //     return button;
+    // }
 
     private void setupPanels() {
         subLeftPanel = new JPanel(new BorderLayout());
@@ -223,7 +227,8 @@ class PreparingOrder extends JFrame {
         southJPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         southJPanel.setBackground(Color.WHITE);
 
-        back = createStyledButton("Back");
+        back = Components.createStyledButton("Back");
+        back.addActionListener(e -> PanelOparater.backToHome(this));
         southJPanel.add(back);
         add(southJPanel, BorderLayout.SOUTH);
 
@@ -235,13 +240,13 @@ class PreparingOrder extends JFrame {
         // });
     }
 
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
-    }
+    // private JButton createStyledButton(String text) {
+    //     JButton button = new JButton(text);
+    //     button.setBackground(new Color(209, 72, 72));
+    //     button.setForeground(Color.WHITE);
+    //     button.setFont(new Font("Quicksand", Font.BOLD, 20));
+    //     return button;
+    // }
 
 }
 
