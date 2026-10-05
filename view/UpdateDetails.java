@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import util.Components;
 
 public class UpdateDetails extends JFrame {
 
@@ -81,7 +82,7 @@ public class UpdateDetails extends JFrame {
         searchField = new JTextField("O", 20);
         searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
 
-        searchBtn = createStyledButton("Search");
+        searchBtn = Components.createStyledButton("Search");
 
         // searchBtn.addActionListener(new ActionListener() {
         //     public void actionPerformed(ActionEvent e) {
@@ -227,8 +228,8 @@ public class UpdateDetails extends JFrame {
     private void subBottomP() {
         subBottomPanel.setBackground(Color.WHITE);
 
-        back = createStyledButton("Back to Home");
-        btnUpdate = createStyledButton("Update");
+        back = Components.createStyledButton("Back to Home");
+        btnUpdate = Components.createStyledButton("Update");
         btnUpdate.setBackground(new Color(0, 177, 59));
 
         // back.addActionListener(new ActionListener() {
@@ -266,27 +267,6 @@ public class UpdateDetails extends JFrame {
 
         subBottomPanel.add(btnUpdate);
         subBottomPanel.add(back);
-    }
-
-    private JLabel createStyledLabel(String text, Color color) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Quicksand", Font.BOLD, 20));
-        label.setForeground(color);
-        return label;
-    }
-
-    private JTextField createStyledTextField(String text) {
-        JTextField textField = new JTextField(text);
-        textField.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return textField;
-    }
-
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(209, 72, 72));
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Quicksand", Font.BOLD, 20));
-        return button;
     }
 }
 
