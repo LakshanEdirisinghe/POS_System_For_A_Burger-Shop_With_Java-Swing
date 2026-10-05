@@ -1,6 +1,9 @@
 package view;
 
 import javax.swing.*;
+
+import Controller.PanelOparater;
+
 import java.awt.*;
 import java.awt.event.*;
 import util.Components;
@@ -229,6 +232,9 @@ public class UpdateDetails extends JFrame {
         subBottomPanel.setBackground(Color.WHITE);
 
         back = Components.createStyledButton("Back to Home");
+
+        back.addActionListener(e -> PanelOparater.backToHome(this));
+        
         btnUpdate = Components.createStyledButton("Update");
         btnUpdate.setBackground(new Color(0, 177, 59));
 
