@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 
 import java.awt.*;
 
-import Controller.CustomerManager;
+
 import Controller.OrderManager;
 import Controller.PanelOparater;
 import util.Components;
@@ -25,7 +25,7 @@ public class SearchCustomer extends JFrame {
 
     private JTextField searchField;
     private JButton back, searchBtn;
-    private JLabel custnameTag, nameValue, title, titlebottumname, customerIdTag, customerIdValue;
+    private JLabel custnameTag, nameValue, title, titlebottumname, customerIdTag;
 
     public SearchCustomer() {
 
