@@ -3,30 +3,27 @@ package view;
 import javax.swing.*;
 
 import Controller.PanelOparater;
+import model.Order;
 
 import java.awt.*;
 import java.awt.event.*;
 import util.Components;
+import Controller.UpdateDetailsController;
 
 public class UpdateDetails extends JFrame {
 
-
     private JPanel topPanel, subCenterPanel, subCenterTopPanel, subLeftCCPanel, subBottomPanel;
 
-    private JLabel titleLabel;
-    private JTextField searchField, CustomerIDValue, CustomerNameValue, QtyValue, TotalValue;
+    private JLabel titleLabel, customerIdLabel, customerNameLabel, qtyLabel, totalLabel, statusLabel;
+    private JLabel customerNameValue, totalValue;
+    private JTextField searchField, customerIdValue, qtyValue;
     private JButton back, searchBtn, btnUpdate;
     private JComboBox<String> comboBox;
 
-    private String orderId;
-    private String newCustId;
-    private String qtyText;
-    private int selectedStatus;
-
-    private int statusint = -1;
+    private Order selectedOrder;
+    private final UpdateDetailsController controller = new UpdateDetailsController();
 
     public UpdateDetails() {
-
 
         setTitle("Update Order Details");
         setSize(950, 445);
@@ -74,7 +71,7 @@ public class UpdateDetails extends JFrame {
     public void hedding() {
         topPanel.setBackground(new Color(0x2C3E50));
 
-        titleLabel = new JLabel("Search Order");
+        titleLabel = new JLabel("Update Order Details");
         titleLabel.setFont(new Font("Quicksand", Font.BOLD, 40));
         titleLabel.setForeground(Color.WHITE);
 
@@ -82,150 +79,77 @@ public class UpdateDetails extends JFrame {
     }
 
     public void searchBar() {
-        searchField = new JTextField("O", 20);
-        searchField.setFont(new Font("Quicksand", Font.BOLD, 18));
+        searchField = Components.createStyledTextField("");
+        searchField.setPreferredSize(new Dimension(220, 35));
 
         searchBtn = Components.createStyledButton("Search");
 
-        // searchBtn.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-        //         orderId = searchField.getText().trim();
-        //         displayOrderDetails(orderId);
-        //     }
-        // });
+        searchBtn.addActionListener(e -> displayOrderDetails(
+                controller.search(searchField.getText().trim())));
 
         subCenterTopPanel.add(searchField);
         subCenterTopPanel.add(searchBtn);
         subCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        displayOrderDetails(null);
     }
 
-    public void displayOrderDetails(String orderId) {
+    private void displayOrderDetails(Order order) {
+        selectedOrder = order;
         subLeftCCPanel.removeAll();
 
-        // DbOrders[] orderArray = database.toArray();
-        // boolean found = false;
+        customerIdLabel = Components.createStyledLabel("Customer ID:");
+        customerNameLabel = Components.createStyledLabel("Customer Name:");
+        qtyLabel = Components.createStyledLabel("Burger QTY:");
+        totalLabel = Components.createStyledLabel("Total:");
+        statusLabel = Components.createStyledLabel("Order Status:");
 
-        // for (int i = 0; i < orderArray.length; i++) {
-        //     if (orderArray[i].getOrderId().equalsIgnoreCase(orderId)) {
-        //         found = true;
+        customerIdValue = Components.createStyledTextField(order == null ? "" : order.getCustId());
+        customerNameValue = Components.createStyledLabel(order == null ? ""
+                : ": " + controller.findCustomerName(order.getCustId()));
+        qtyValue = Components.createStyledTextField(order == null ? "" : String.valueOf(order.getQuantity()));
+        totalValue = Components.createStyledLabel(order == null ? "" : formatTotal(order.getQuantity()));
+        comboBox = new JComboBox<>(new String[] { "PREPARING", "DELIVERED", "CANCELLED" });
 
-                
-        //         statusint = orderArray[i].getOrderStatus();
+        if (order != null) {
+            comboBox.setSelectedItem(order.getOrderStatus().toString());
+        }
 
-        //         // Common order info
-        //         String custId = orderArray[i].getCustId();
-        //         String custName = customerDb.getName(custId);
-        //         int qty = orderArray[i].getQuantityOfBurger();
-        //         int total = qty * 500;
+        customerIdValue.setEnabled(order != null);
+        qtyValue.setEnabled(order != null);
+        comboBox.setEnabled(order != null);
+        qtyValue.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                totalValue.setText(formatTotal(parseQuantity(qtyValue.getText())));
+            }
+        });
 
-        //         Color labelColor = (statusint == 0) ? Color.BLACK : Color.LIGHT_GRAY;
-
-        //         subLeftCCPanel.setLayout(new GridLayout(0, 2, 10, 10));
-
-        //         // ==== Customer ID ====
-        //         subLeftCCPanel.add(createStyledLabel("Customer ID ", labelColor));
-
-        //         if (statusint == 0) {
-        //             CustomerIDValue = createStyledTextField(custId);
-        //             UpdateDetails.this.newCustId = custId; // initialize
-
-        //             CustomerIDValue.addKeyListener(new KeyAdapter() {
-        //                 public void keyReleased(KeyEvent e) {
-        //                     UpdateDetails.this.newCustId = CustomerIDValue.getText().trim();
-        //                     String newCustName = customerDb.getName(newCustId);
-        //                     CustomerNameValue.setText(newCustName);
-        //                 }
-        //             });
-        //             subLeftCCPanel.add(CustomerIDValue);
-        //         } else {
-        //             subLeftCCPanel.add(createStyledLabel(": " + custId, labelColor));
-        //         }
-
-        //         // ==== Customer Name ====
-        //         subLeftCCPanel.add(createStyledLabel("Customer Name ", labelColor));
-
-        //         if (statusint == 0) {
-        //             CustomerNameValue = createStyledTextField(custName);
-        //             CustomerNameValue.setEditable(false);
-        //             subLeftCCPanel.add(CustomerNameValue);
-        //         } else {
-        //             subLeftCCPanel.add(createStyledLabel(": " + custName, labelColor));
-        //         }
-
-        //         // ==== Quantity ====
-        //         subLeftCCPanel.add(createStyledLabel("Quantity ", labelColor));
-
-        //         if (statusint == 0) {
-        //             QtyValue = createStyledTextField(String.valueOf(qty));
-        //             UpdateDetails.this.qtyText = String.valueOf(qty); // initialize
-
-        //             QtyValue.addKeyListener(new KeyAdapter() {
-        //                 public void keyReleased(KeyEvent e) {
-        //                     UpdateDetails.this.qtyText = QtyValue.getText().trim();
-        //                     int newQty = 0;
-        //                     try {
-        //                         newQty = Integer.parseInt(UpdateDetails.this.qtyText);
-        //                     } catch (NumberFormatException ex) {
-        //                         // Handle invalid input
-        //                     }
-        //                     int newTotal = newQty * 500;
-        //                     TotalValue.setText(newTotal + ".00");
-        //                 }
-        //             });
-        //             subLeftCCPanel.add(QtyValue);
-        //         } else {
-        //             subLeftCCPanel.add(createStyledLabel(": " + qty, labelColor));
-        //         }
-
-        //         // ==== Total ====
-        //         subLeftCCPanel.add(createStyledLabel("Total ", labelColor));
-
-        //         if (statusint == 0) {
-        //             TotalValue = createStyledTextField(String.valueOf(total));
-        //             TotalValue.setEditable(false);
-        //             subLeftCCPanel.add(TotalValue);
-        //         } else {
-        //             subLeftCCPanel.add(createStyledLabel(": " + total + " LKR", labelColor));
-        //         }
-
-        //         // ==== Status ====
-        //         String statusText = (statusint == 0) ? "PREPARING" : (statusint == 1) ? "DELIVERED" : "CANCELLED";
-
-        //         subLeftCCPanel.add(createStyledLabel("Status ", labelColor));
-
-        //         if (statusint == 0) {
-        //             String[] options = { "PREPARING", "DELIVERED", "CANCELLED" };
-        //             comboBox = new JComboBox<>(options);
-        //             comboBox.setSelectedItem(statusText);
-        //             comboBox.setFont(new Font("Quicksand", Font.BOLD, 20));
-        //             this.selectedStatus = comboBox.getSelectedIndex();
-
-        //             subLeftCCPanel.add(comboBox);
-        //         } else {
-        //             subLeftCCPanel.add(createStyledLabel(": " + statusText, labelColor));
-        //         }
-
-        //         // ==== Extra message for delivered/cancelled ====
-        //         if (statusint == 1) {
-        //             subLeftCCPanel.add(createStyledLabel("Message", Color.RED));
-        //             subLeftCCPanel.add(createStyledLabel(": Sorry, this order is delivered.", Color.RED));
-        //         } else if (statusint == 2) {
-        //             subLeftCCPanel.add(createStyledLabel("Message", Color.RED));
-        //             subLeftCCPanel.add(createStyledLabel(": Sorry, this order is canceled.", Color.RED));
-        //         }
-
-        //         break;
-        //     }
-        // }
-
-        // if (!found) {
-        //     subLeftCCPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        //     subLeftCCPanel.add(createStyledLabel("Order not found!", Color.RED));
-        // }
+        subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
+        subLeftCCPanel.add(customerIdLabel);
+        subLeftCCPanel.add(customerIdValue);
+        subLeftCCPanel.add(customerNameLabel);
+        subLeftCCPanel.add(customerNameValue);
+        subLeftCCPanel.add(qtyLabel);
+        subLeftCCPanel.add(qtyValue);
+        subLeftCCPanel.add(totalLabel);
+        subLeftCCPanel.add(totalValue);
+        subLeftCCPanel.add(statusLabel);
+        subLeftCCPanel.add(comboBox);
 
         subLeftCCPanel.revalidate();
         subLeftCCPanel.repaint();
-        subLeftCCPanel.setBorder(BorderFactory.createEmptyBorder(20, 150, 20, 150));
+    }
+
+    private int parseQuantity(String text) {
+        try {
+            return Integer.parseInt(text.trim());
+        } catch (NumberFormatException ex) {
+            return 0;
+        }
+    }
+
+    private String formatTotal(int quantity) {
+        return String.format(": %.2f LKR", quantity * 500.0);
     }
 
     private void subBottomP() {
@@ -234,45 +158,51 @@ public class UpdateDetails extends JFrame {
         back = Components.createStyledButton("Back to Home");
 
         back.addActionListener(e -> PanelOparater.backToHome(this));
-        
-        btnUpdate = Components.createStyledButton("Update");
-        btnUpdate.setBackground(new Color(0, 177, 59));
 
-        // back.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-        //         new MainMenu(database);
-        //         dispose();
-        //     }
-        // });
+        btnUpdate = Components.createStyledButton("Update", new Color(0, 177, 59));
 
-        // btnUpdate.addActionListener(new ActionListener() {
-        //     public void actionPerformed(ActionEvent e) {
-                
-        //         if (orderId != null && statusint == 0) {
-        //             try {
-        //                 int newQty = Integer.parseInt(qtyText);
-        //                 int newStatus = comboBox.getSelectedIndex(); 
-        //                 // 0 = Preparing, 1 = Delivered, 2 = Cancelled
-
-        //                 boolean success = database.updateOrder(orderId, newCustId, newQty, newStatus);
-
-        //                 if (success) {
-        //                     JOptionPane.showMessageDialog(UpdateDetails.this,
-        //                             "Order updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        //                 } else {
-        //                     JOptionPane.showMessageDialog(UpdateDetails.this,
-        //                             "Failed to update order!", "Error", JOptionPane.ERROR_MESSAGE);
-        //                 }
-        //             } catch (NumberFormatException ex) {
-        //                 JOptionPane.showMessageDialog(UpdateDetails.this,
-        //                         "Invalid quantity entered!", "Error", JOptionPane.ERROR_MESSAGE);
-        //             }
-        //         }
-        //     }
-        // });
+        btnUpdate.addActionListener(e -> updateOrder());
 
         subBottomPanel.add(btnUpdate);
         subBottomPanel.add(back);
     }
-}
 
+    private void updateOrder() {
+        UpdateDetailsController.UpdateResult result = controller.update(
+                selectedOrder,
+                customerIdValue.getText(),
+                qtyValue.getText(),
+                (String) comboBox.getSelectedItem());
+
+        if (result != UpdateDetailsController.UpdateResult.SUCCESS) {
+            showUpdateError(result);
+            return;
+        }
+
+        displayOrderDetails(selectedOrder);
+        JOptionPane.showMessageDialog(this, "Order updated successfully!", "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void showUpdateError(UpdateDetailsController.UpdateResult result) {
+        String message;
+        switch (result) {
+            case NO_ORDER_SELECTED:
+                message = "Search for an order first.";
+                break;
+            case ORDER_NOT_PREPARING:
+                message = "Only preparing orders can be updated.";
+                break;
+            case INVALID_QUANTITY:
+                message = "Quantity must be greater than zero.";
+                break;
+            case CUSTOMER_NOT_FOUND:
+                message = "Customer ID was not found.";
+                break;
+            default:
+                message = "The order could not be updated.";
+        }
+
+        JOptionPane.showMessageDialog(this, message, "Validation Error", JOptionPane.WARNING_MESSAGE);
+    }
+}

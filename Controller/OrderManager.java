@@ -232,6 +232,27 @@ public class OrderManager {
 
     }
 
+    public static boolean updateOrder(String orderId, String customerId, int quantity, OrderStatus status) {
+        if (orderId == null || customerId == null || status == null || quantity <= 0) {
+            return false;
+        }
+
+        if (CustomerManager.findCustomerById(customerId.trim()) == null) {
+            return false;
+        }
+
+        for (Order order : placeOrderDataSet) {
+            if (order.getOrderId().equalsIgnoreCase(orderId.trim())) {
+                order.setCustId(customerId.trim());
+                order.setQuantity(quantity);
+                order.setOrderStatus(status);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static String getOrderDetails(String customerId, JPanel centerPanel) {
 
         if (customerId == null || customerId.trim().isEmpty() || !(customerId.trim().substring(0, 1).equalsIgnoreCase("c"))) {
