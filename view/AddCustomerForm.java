@@ -7,7 +7,7 @@ import model.Customer;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddCustomerForm extends JFrame {
+public class AddCustomerForm extends JFrame  {
 
     private JButton addButton, cancelButton;
 
@@ -20,6 +20,7 @@ public class AddCustomerForm extends JFrame {
         setSize(400, 250);
         setLocationRelativeTo(null);
         setResizable(false);
+
 
         createForm();
         eventListeners();
