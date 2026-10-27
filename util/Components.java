@@ -16,16 +16,16 @@ public class Components {
         return button;
     }
 
+    public static JButton createStyledButton(String text, Color bgColor) {
+        JButton btn = createStyledButton(text);
+        btn.setBackground(bgColor);
+        return btn;
+    }
+
     public static JLabel createStyledLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Quicksand", Font.BOLD, 20));
         return label;
-    }
-
-    public static JButton createStyledButton(String text, Color bgColor) {
-        JButton btn = createStyledButton(text); 
-        btn.setBackground(bgColor);
-        return btn;
     }
 
     public static JTextField createStyledTextField(String text) {
@@ -35,9 +35,9 @@ public class Components {
     }
 
     public static JTextField createStyledTextField(String text, int columSize) {
-      JTextField obj = createStyledTextField(text);
-      obj.setColumns(columSize);
-      return obj;
+        JTextField obj = createStyledTextField(text);
+        obj.setColumns(columSize);
+        return obj;
     }
 
 }
