@@ -29,6 +29,7 @@ public class UpdateDetails extends JFrame {
         setSize(950, 445);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         initializePanels();
         setLayouts();

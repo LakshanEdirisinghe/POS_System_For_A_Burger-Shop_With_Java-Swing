@@ -29,6 +29,7 @@ public class SearchOrder extends JFrame {
         setSize(735, 445);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         headerPanel();
         centerSearchBarPanal();

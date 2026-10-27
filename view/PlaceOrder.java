@@ -44,6 +44,7 @@ public class PlaceOrder extends JFrame {
         setSize(600, 223);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         headerPanel();
         leftFormPanel();
