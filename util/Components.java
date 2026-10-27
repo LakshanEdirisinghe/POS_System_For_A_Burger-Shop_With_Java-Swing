@@ -36,4 +36,10 @@ public class Components {
         return textField;
     }
 
+    public static JTextField createStyledTextField(String text, int columSize) {
+      JTextField obj = createStyledTextField(text);
+      obj.setColumns(columSize);
+      return obj;
+    }
+
 }

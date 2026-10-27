@@ -3,6 +3,7 @@ package view;
 import Controller.CustomerManager;
 import Controller.PanelOparater;
 import model.Customer;
+import util.Components;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +12,13 @@ public class AddCustomerForm extends JFrame  {
 
     private JButton addButton, cancelButton;
 
-    private final JTextField customerIdField = new JTextField("C",20);
-    private final JTextField customerNameField = new JTextField(20);
+    private final JTextField customerIdField = Components.createStyledTextField("C",10);// new JTextField("C",20);
+    private final JTextField customerNameField = Components.createStyledTextField("",20);//new JTextField(20);
 
     public AddCustomerForm() {
         setTitle("Add Customer");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(400, 250);
+        setSize(735, 445);
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -34,11 +35,11 @@ public class AddCustomerForm extends JFrame  {
         constraints.insets = new Insets(8, 8, 8, 8);
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel idLabel = new JLabel("Customer ID:");
-        JLabel nameLabel = new JLabel("Customer Name:");
+        JLabel idLabel = Components.createStyledLabel("Customer ID:");
+        JLabel nameLabel = Components.createStyledLabel("Customer Name:"); 
 
-        addButton = new JButton("Add Customer");
-        cancelButton = new JButton("Cancel");
+        addButton = Components.createStyledButton("Add Customer", new Color(0x27AE60)); 
+        cancelButton = Components.createStyledButton("Cancel", new Color(0xE74C3C));
 
         constraints.gridx = 0;
         constraints.gridy = 0;
