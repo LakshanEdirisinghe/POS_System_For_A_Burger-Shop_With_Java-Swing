@@ -171,8 +171,10 @@ public class PlaceOrder extends JFrame {
 
         orderIdValue.setText(OrderManager.getID());
         customerIdValue.setText("C");
+        customerIdValue.requestFocus();
         qtyField.setText("");
         netTotalValue.setText("0.00");
+
     }
 
 }
