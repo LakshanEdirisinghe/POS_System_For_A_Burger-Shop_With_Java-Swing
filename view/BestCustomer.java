@@ -27,6 +27,7 @@ public class BestCustomer extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
 
         topPanel();
         dataTableLoder();

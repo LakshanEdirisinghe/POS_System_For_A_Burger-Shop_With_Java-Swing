@@ -34,6 +34,7 @@ public class SearchCustomer extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(2, 0));
         setLocationRelativeTo(null);
+        setResizable(false);
 
         subBottomPannal();
         subTopPannal();

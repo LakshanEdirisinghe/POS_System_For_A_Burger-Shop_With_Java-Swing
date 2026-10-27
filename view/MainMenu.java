@@ -6,11 +6,11 @@ import javax.swing.*;
 import Controller.PanelOparater;
 import util.Components;
 
-
 public class MainMenu extends JFrame {
 
     private JPanel subLeftPanel, subRightPanel, btnPanel;
-    private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,btnAddCustomer,
+    private JButton btnPlaceOrder, btnBestCustomer, btnSearchOrder, btnCustomerDetails, btnViewOrders, btnUpdateOrder,
+            btnAddCustomer,
             btnExit;
 
     // private PanelOparater panelOparater;
@@ -20,6 +20,7 @@ public class MainMenu extends JFrame {
         setSize(1227, 579);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         setLayout(new GridLayout(1, 2));
         subLeftPanel = new JPanel(new BorderLayout());
@@ -64,7 +65,7 @@ public class MainMenu extends JFrame {
 
         // Buttons
         btnPlaceOrder = Components.createStyledButton("Place Order");
-        btnAddCustomer = Components.createStyledButton("Add Customer",new Color(0x3498DB));
+        btnAddCustomer = Components.createStyledButton("Add Customer", new Color(0x3498DB));
         btnBestCustomer = Components.createStyledButton("Find Best Customer");
         btnSearchOrder = Components.createStyledButton("Search Order");
         btnCustomerDetails = Components.createStyledButton("Search Customer Details");
@@ -79,7 +80,7 @@ public class MainMenu extends JFrame {
         btnPanel.add(btnCustomerDetails);
         btnPanel.add(btnViewOrders);
         btnPanel.add(btnUpdateOrder);
-        
+
         JPanel exitPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         exitPanel.setBackground(new Color(216, 216, 216));
         exitPanel.add(btnExit);

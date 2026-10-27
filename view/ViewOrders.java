@@ -17,14 +17,14 @@ public class ViewOrders extends JFrame {
     private JButton btnDeliveredOrder, btnCanceledOrder, back, btnPreparingOrder;
     private OrderDeliveryStatePannel preparingOrderPanel;
 
-
     public ViewOrders() {
-       // === Frame setup ===
+        // === Frame setup ===
         setLayout(new GridLayout(1, 2));
         setTitle("View Orders");
         setSize(1227, 579);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         setupPanels();
         assemblePanels();
@@ -66,7 +66,8 @@ public class ViewOrders extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
                     preparingOrderPanel = new OrderDeliveryStatePannel("Preparing Orders", ViewOrders.this);
-                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.PREPARING);
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(),
+                            OrderStatus.PREPARING);
                 } else {
                     preparingOrderPanel.setVisible(true);
                     preparingOrderPanel.toFront();
@@ -79,7 +80,8 @@ public class ViewOrders extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
                     preparingOrderPanel = new OrderDeliveryStatePannel("Delivered Orders", ViewOrders.this);
-                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.DELIVERED);
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(),
+                            OrderStatus.DELIVERED);
                 } else {
                     preparingOrderPanel.setVisible(true);
                     preparingOrderPanel.toFront();
@@ -92,7 +94,8 @@ public class ViewOrders extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (preparingOrderPanel == null || !preparingOrderPanel.isDisplayable()) {
                     preparingOrderPanel = new OrderDeliveryStatePannel("Cancelled Orders", ViewOrders.this);
-                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(), OrderStatus.CANCELLED);
+                    OrderManager.getOrderDetailsOrderByStatus(preparingOrderPanel.getCenterPanel(),
+                            OrderStatus.CANCELLED);
                 } else {
                     preparingOrderPanel.setVisible(true);
                     preparingOrderPanel.toFront();
@@ -106,7 +109,7 @@ public class ViewOrders extends JFrame {
         subRightCenter.add(btnCanceledOrder);
 
         subRightBottomPanel.setBackground(Color.WHITE);
-        back =Components.createStyledButton("Back to Home");
+        back = Components.createStyledButton("Back to Home");
         back.addActionListener(e -> PanelOparater.backToHome(this));
 
         subRightBottomPanel.add(back);
